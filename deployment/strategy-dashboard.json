@@ -1,0 +1,84 @@
+{
+  "project": "Asistente Vial México",
+  "version": "1.0.0",
+  "deployment": {
+    "phases": [
+      {
+        "name": "MVP",
+        "duration": "3 meses",
+        "cost": 15000,
+        "features": ["GPS tracking", "SOS", "panel comercial"],
+        "kpis": ["500 usuarios", "50 socios", "95% uptime"]
+      },
+      {
+        "name": "Beta Cerrada",
+        "duration": "3 meses", 
+        "cost": 25000,
+        "features": ["Google Play testing", "métricas", "feedback"],
+        "kpis": ["2000 usuarios", "150 socios", "4.5★ rating"]
+      },
+      {
+        "name": "Lanzamiento Público",
+        "duration": "3 meses",
+        "cost": 35000,
+        "features": ["Play Store", "marketing", "soporte"],
+        "kpis": ["10000 usuarios", "300 socios", "1000 descargas/día"]
+      },
+      {
+        "name": "Escalamiento",
+        "duration": "3 meses",
+        "cost": 50000,
+        "features": ["panel municipal", "aseguradoras", "flotillas"],
+        "kpis": ["50000 usuarios", "500 socios", "5 contratos B2B"]
+      }
+    ]
+  },
+  "costs": {
+    "infrastructure": {
+      "firebase": 500,
+      "maps_api": 400,
+      "hosting": 100,
+      "gemini_api": 1500
+    },
+    "development": {
+      "qa_support": 1000,
+      "marketing": 3000,
+      "integrations": 15000
+    },
+    "monthly_total": 21500
+  },
+  "revenue": {
+    "freemium": 0,
+    "premium": 5,
+    "business": 35,
+    "enterprise": 2000,
+    "projections": {
+      "month_3": 2500,
+      "month_6": 15000,
+      "month_9": 45000,
+      "month_12": 125000
+    }
+  },
+  "agents": {
+    "diagnostic": {
+      "role": "Evaluar fallas vehiculares",
+      "cost_per_query": 0.05,
+      "monthly_queries": 10000
+    },
+    "emergency": {
+      "role": "Gestionar alertas SOS",
+      "cost_per_alert": 0.10,
+      "monthly_alerts": 2000
+    },
+    "commercial": {
+      "role": "Gestionar socios",
+      "cost_per_interaction": 0.02,
+      "monthly_interactions": 50000
+    },
+    "institutional": {
+      "role": "Panel municipal",
+      "cost_per_report": 1.00,
+      "monthly_reports": 500
+    }
+  }
+}

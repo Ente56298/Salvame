@@ -1,0 +1,54 @@
+[
+  {
+    "id": "taller-001",
+    "nombre": "Taller Mecánico Insurgentes",
+    "tipo": "mecanico",
+    "direccion": "Av. Insurgentes Sur 1234, Col. Del Valle, CDMX",
+    "telefono": "+52 55 1234 5678",
+    "lat": 19.3895,
+    "lng": -99.1677,
+    "servicios": ["Mecánica general", "Frenos", "Suspensión", "Transmisión"],
+    "horario": "Lunes a Sábado 8:00 - 18:00",
+    "calificacion": 4.5,
+    "disponible": true
+  },
+  {
+    "id": "grua-001", 
+    "nombre": "Grúas Express CDMX",
+    "tipo": "grua",
+    "direccion": "Circuito Interior, Col. Roma Norte, CDMX",
+    "telefono": "+52 55 2345 6789",
+    "lat": 19.4126,
+    "lng": -99.1580,
+    "servicios": ["Grúa 24/7", "Remolque", "Auxilio vial"],
+    "horario": "24 horas",
+    "calificacion": 4.8,
+    "disponible": true
+  },
+  {
+    "id": "refacciones-001",
+    "nombre": "AutoZone Polanco",
+    "tipo": "refacciones", 
+    "direccion": "Av. Presidente Masaryk 111, Polanco, CDMX",
+    "telefono": "+52 55 3456 7890",
+    "lat": 19.4326,
+    "lng": -99.1956,
+    "servicios": ["Refacciones", "Aceites", "Baterías", "Llantas"],
+    "horario": "Lunes a Domingo 8:00 - 21:00",
+    "calificacion": 4.3,
+    "disponible": true
+  },
+  {
+    "id": "gasolinera-001",
+    "nombre": "Pemex Reforma",
+    "tipo": "gasolinera",
+    "direccion": "Paseo de la Reforma 456, Cuauhtémoc, CDMX", 
+    "telefono": "+52 55 4567 8901",
+    "lat": 19.4284,
+    "lng": -99.1677,
+    "servicios": ["Gasolina", "Diésel", "Tienda", "Cajero"],
+    "horario": "24 horas",
+    "calificacion": 4.1,
+    "disponible": true
+  }
+]

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Asistente Vial Mexico</string>
+    <string name="title_activity_main">Asistente Vial Mexico</string>
+    <string name="package_name">com.asistentevial.mexico</string>
+    <string name="custom_url_scheme">com.asistentevial.mexico</string>
+</resources>

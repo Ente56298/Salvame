@@ -1,0 +1,31 @@
+{
+  "competitors": [
+    {
+      "name": "Google Maps",
+      "strengths": ["Navegación precisa", "Datos tráfico tiempo real", "Adopción masiva"],
+      "weaknesses": ["Sin SOS integrado", "Sin red servicios", "Sin IA diagnóstico"],
+      "market_share": "85%",
+      "differentiation": "Navegación vs Asistencia integral"
+    },
+    {
+      "name": "Waze",
+      "strengths": ["Reportes comunidad", "Alertas tráfico", "Navegación social"],
+      "weaknesses": ["Sin emergencias", "Sin servicios", "Solo información"],
+      "market_share": "10%",
+      "differentiation": "Información vs Acción"
+    },
+    {
+      "name": "Apps Seguros",
+      "strengths": ["Asistencia carretera", "Red talleres", "Respaldo financiero"],
+      "weaknesses": ["Solo asegurados", "Sin IA", "Limitado geográficamente"],
+      "market_share": "3%",
+      "differentiation": "Exclusivo vs Universal"
+    }
+  ],
+  "market_opportunity": {
+    "gap": "Plataforma integral SOS + IA + Red servicios",
+    "size": "$100M USD",
+    "growth_rate": "15% anual",
+    "barriers": ["Confianza usuario", "Red servicios", "Regulación"]
+  }
+}

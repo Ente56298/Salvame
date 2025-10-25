@@ -1,0 +1,148 @@
+{
+  "title": "Asistente Vial México",
+  "tagline": "Seguridad, asistencia y conectividad en carretera, impulsado por IA",
+  "slides": [
+    {
+      "id": 1,
+      "title": "Asistente Vial México",
+      "type": "cover",
+      "content": {
+        "tagline": "Seguridad, asistencia y conectividad en carretera, impulsado por IA",
+        "background": "carretera-mexicana-gps.jpg",
+        "colors": ["#1e40af", "#ffffff"]
+      }
+    },
+    {
+      "id": 2,
+      "title": "El Problema",
+      "type": "problem",
+      "content": {
+        "stats": [
+          "40% conductores sin asistencia inmediata",
+          "Carreteras con baja cobertura de servicios",
+          "Falta integración usuarios-negocios-autoridades"
+        ],
+        "visual": "problema-carretera.svg",
+        "colors": ["#dc2626", "#fef2f2"]
+      }
+    },
+    {
+      "id": 3,
+      "title": "Nuestra Solución",
+      "type": "solution",
+      "content": {
+        "features": [
+          "Seguimiento GPS en tiempo real",
+          "Botón SOS con geolocalización",
+          "IA Gemini para diagnóstico 24/7",
+          "Red de servicios conectados",
+          "Panel institucional"
+        ],
+        "visual": "app-mockup.png",
+        "colors": ["#059669", "#f0fdf4"]
+      }
+    },
+    {
+      "id": 4,
+      "title": "Propuesta de Valor",
+      "type": "value",
+      "content": {
+        "values": [
+          {"icon": "🚨", "text": "Seguridad inmediata: SOS con geolocalización"},
+          {"icon": "🧠", "text": "IA 24/7: diagnóstico y consultas"},
+          {"icon": "🛠️", "text": "Red de talleres conectados"},
+          {"icon": "📊", "text": "Analítica institucional"}
+        ],
+        "colors": ["#7c3aed", "#faf5ff"]
+      }
+    },
+    {
+      "id": 5,
+      "title": "Producto en Acción",
+      "type": "demo",
+      "content": {
+        "screenshots": [
+          "mapa-interactivo.png",
+          "boton-sos.png",
+          "panel-negocios.png",
+          "historial.png"
+        ],
+        "colors": ["#0891b2", "#f0f9ff"]
+      }
+    },
+    {
+      "id": 6,
+      "title": "Mercado Objetivo",
+      "type": "market",
+      "content": {
+        "segments": [
+          {"name": "Usuarios finales", "size": "15M conductores", "revenue": "$45M"},
+          {"name": "Socios comerciales", "size": "50K talleres", "revenue": "$30M"},
+          {"name": "Instituciones", "size": "2.5K municipios", "revenue": "$25M"}
+        ],
+        "total_market": "$100M",
+        "colors": ["#ea580c", "#fff7ed"]
+      }
+    },
+    {
+      "id": 7,
+      "title": "Modelo de Negocio",
+      "type": "business",
+      "content": {
+        "streams": [
+          {"type": "Freemium", "price": "$0", "features": "Básico"},
+          {"type": "Premium", "price": "$5/mes", "features": "Completo"},
+          {"type": "Socios", "price": "$35/mes", "features": "Panel IA"},
+          {"type": "Enterprise", "price": "$2K/mes", "features": "Institucional"}
+        ],
+        "colors": ["#16a34a", "#f0fdf4"]
+      }
+    },
+    {
+      "id": 8,
+      "title": "Análisis Financiero",
+      "type": "financials",
+      "content": {
+        "costs": {
+          "infrastructure": "$2.5K/mes",
+          "development": "$3K/mes",
+          "marketing": "$5K/mes"
+        },
+        "revenue_projection": "$125K/mes año 1",
+        "roi": "1180%",
+        "colors": ["#9333ea", "#faf5ff"]
+      }
+    },
+    {
+      "id": 9,
+      "title": "Proyecciones",
+      "type": "projections",
+      "content": {
+        "milestones": [
+          {"year": "Año 1", "users": "50K", "partners": "500", "revenue": "$1.5M"},
+          {"year": "Año 2", "users": "200K", "partners": "2K", "revenue": "$6M"},
+          {"year": "Año 3", "users": "500K", "partners": "5K", "revenue": "$15M"}
+        ],
+        "colors": ["#0d9488", "#f0fdfa"]
+      }
+    },
+    {
+      "id": 10,
+      "title": "Inversión",
+      "type": "cta",
+      "content": {
+        "ask": "$100K USD",
+        "use": ["Infraestructura", "Marketing", "Expansión"],
+        "offer": "Participación accionaria + métricas exclusivas",
+        "contact": "asistentevial@startup.mx",
+        "colors": ["#dc2626", "#fef2f2"]
+      }
+    }
+  ],
+  "design": {
+    "font": "Inter",
+    "primary_color": "#1e40af",
+    "secondary_color": "#059669",
+    "accent_color": "#dc2626"
+  }
+}

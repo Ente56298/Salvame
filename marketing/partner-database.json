@@ -1,0 +1,158 @@
+{
+  "partner_categories": {
+    "talleres_mecanicos": {
+      "target": 200,
+      "commission": "8%",
+      "profile": "5-20 empleados, servicios generales",
+      "prospects": [
+        {
+          "name": "Taller El Güero",
+          "location": "Naucalpan",
+          "contact": "555-123-4567",
+          "services": ["Mecánica general", "Frenos", "Suspensión"],
+          "meeting_date": "2025-11-04 09:00",
+          "status": "scheduled"
+        },
+        {
+          "name": "Taller Los Compadres", 
+          "location": "Ecatepec",
+          "contact": "555-234-5678",
+          "services": ["Transmisiones", "Motor", "Clutch"],
+          "meeting_date": "2025-11-05 10:00",
+          "status": "scheduled"
+        },
+        {
+          "name": "Mecánica Integral",
+          "location": "Coacalco", 
+          "contact": "555-345-6789",
+          "services": ["Servicios completos", "Diagnóstico", "Mantenimiento"],
+          "meeting_date": "2025-11-06 16:00",
+          "status": "scheduled"
+        }
+      ]
+    },
+    "gruas_arrastre": {
+      "target": 100,
+      "commission": "12%",
+      "profile": "Cobertura 24/7, flotilla 3+ vehículos",
+      "prospects": [
+        {
+          "name": "Grúas Rápidas 24/7",
+          "location": "Tlalnepantla",
+          "contact": "555-456-7890", 
+          "services": ["Arrastre", "Rescate carretera", "Traslados"],
+          "meeting_date": "2025-11-04 11:00",
+          "status": "scheduled"
+        },
+        {
+          "name": "Grúas El Rescate",
+          "location": "Cuautitlán Izcalli",
+          "contact": "555-567-8901",
+          "services": ["Servicios 24/7", "Grúa pesada", "Auxilio vial"],
+          "meeting_date": "2025-11-05 17:00", 
+          "status": "scheduled"
+        }
+      ]
+    },
+    "refaccionarias": {
+      "target": 150,
+      "commission": "5%",
+      "profile": "Inventario amplio, entrega domicilio",
+      "prospects": [
+        {
+          "name": "Refaccionaria La Central",
+          "location": "CDMX Centro",
+          "contact": "555-678-9012",
+          "services": ["Autopartes originales", "Refacciones", "Accesorios"],
+          "meeting_date": "2025-11-04 14:00",
+          "status": "scheduled"
+        },
+        {
+          "name": "Mundo Motor",
+          "location": "Atizapán",
+          "contact": "555-789-0123",
+          "services": ["Distribución mayorista", "Importaciones", "Catálogo amplio"],
+          "meeting_date": "2025-11-06 12:00",
+          "status": "scheduled"
+        }
+      ]
+    },
+    "servicios_especializados": {
+      "target": 50,
+      "commission": "10%", 
+      "profile": "Especialización técnica certificada",
+      "prospects": [
+        {
+          "name": "Eléctrico Chispa",
+          "location": "Gustavo A. Madero",
+          "contact": "555-890-1234",
+          "services": ["Sistemas eléctricos", "Computadoras", "Sensores"],
+          "meeting_date": "2025-11-05 15:00",
+          "status": "scheduled"
+        },
+        {
+          "name": "Carrocerías del Norte",
+          "location": "Tultitlán",
+          "contact": "555-901-2345", 
+          "services": ["Hojalatería", "Pintura", "Enderezado"],
+          "meeting_date": "2025-11-06 09:30",
+          "status": "scheduled"
+        }
+      ]
+    }
+  },
+  "meeting_schedule": {
+    "november_2025": {
+      "week_1": [
+        {
+          "date": "2025-11-04",
+          "meetings": 3,
+          "locations": ["Naucalpan", "Tlalnepantla", "CDMX"]
+        },
+        {
+          "date": "2025-11-05", 
+          "meetings": 3,
+          "locations": ["Ecatepec", "Gustavo A. Madero", "Cuautitlán"]
+        },
+        {
+          "date": "2025-11-06",
+          "meetings": 3,
+          "locations": ["Tultitlán", "Atizapán", "Coacalco"]
+        }
+      ],
+      "week_2": [
+        {
+          "date": "2025-11-14",
+          "event": "Asociación Talleres Metropolitanos",
+          "type": "group_presentation",
+          "attendees": 15
+        },
+        {
+          "date": "2025-11-15",
+          "meetings": 3,
+          "locations": ["Nezahualcóyotl", "Texcoco", "Chalco"]
+        }
+      ]
+    },
+    "december_2025": {
+      "launch_event": {
+        "date": "2025-12-03",
+        "venue": "Hotel Marriott Polanco",
+        "attendees": 50,
+        "agenda": [
+          "10:00 - Evento lanzamiento",
+          "14:00 - Presentación socios",
+          "18:00 - Networking y firmas"
+        ]
+      }
+    }
+  },
+  "kpis": {
+    "contacts_target": 1000,
+    "meetings_target": 200,
+    "conversion_rate": "25%",
+    "partners_signed": 200,
+    "average_close_time": "15 days",
+    "monthly_revenue_target": 45000
+  }
+}

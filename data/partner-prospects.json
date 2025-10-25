@@ -1,0 +1,221 @@
+{
+  "source": "DENUE-INEGI",
+  "url": "https://www.inegi.org.mx/app/mapa/denue/default.aspx",
+  "generated_date": "2025-09-24",
+  "total_prospects": 500,
+  
+  "categories": {
+    "talleres_mecanicos": {
+      "denue_code": "811111",
+      "target": 200,
+      "commission": "8%",
+      "avg_ticket": 1200,
+      "prospects": [
+        {
+          "id": "taller_001",
+          "name": "Taller El Güero",
+          "location": "Naucalpan, Estado de México",
+          "address": "Av. Universidad 123, Col. Centro",
+          "contact": "555-123-4567",
+          "email": "elguero@talleres.mx",
+          "services": ["Mecánica general", "Frenos", "Suspensión"],
+          "employees": 8,
+          "priority": "high",
+          "status": "scheduled",
+          "meeting_date": "2025-11-04 09:00"
+        },
+        {
+          "id": "taller_002", 
+          "name": "Mecánica Los Compadres",
+          "location": "Ecatepec, Estado de México",
+          "address": "Calle Morelos 456, Col. Aragón",
+          "contact": "555-234-5678",
+          "services": ["Transmisiones", "Motor", "Clutch"],
+          "employees": 12,
+          "priority": "high",
+          "status": "scheduled",
+          "meeting_date": "2025-11-05 10:00"
+        },
+        {
+          "id": "taller_003",
+          "name": "Taller Integral del Valle",
+          "location": "Coacalco, Estado de México", 
+          "address": "Blvd. Coacalco 789, Col. Villa de las Flores",
+          "contact": "555-345-6789",
+          "services": ["Servicios completos", "Diagnóstico", "Mantenimiento"],
+          "employees": 15,
+          "priority": "medium",
+          "status": "scheduled",
+          "meeting_date": "2025-11-06 16:00"
+        }
+      ]
+    },
+    
+    "gruas_arrastre": {
+      "denue_code": "488210",
+      "target": 100,
+      "commission": "12%",
+      "avg_ticket": 1800,
+      "prospects": [
+        {
+          "id": "grua_001",
+          "name": "Grúas Rápidas 24/7",
+          "location": "Tlalnepantla, Estado de México",
+          "address": "Carretera México-Querétaro Km 15",
+          "contact": "555-456-7890",
+          "services": ["Arrastre", "Rescate carretera", "Traslados"],
+          "fleet_size": 8,
+          "coverage": "24/7",
+          "priority": "high",
+          "status": "scheduled",
+          "meeting_date": "2025-11-04 11:00"
+        },
+        {
+          "id": "grua_002",
+          "name": "Grúas El Rescate",
+          "location": "Cuautitlán Izcalli, Estado de México",
+          "address": "Av. Constituyentes 321, Col. Centro Urbano",
+          "contact": "555-567-8901",
+          "services": ["Servicios 24/7", "Grúa pesada", "Auxilio vial"],
+          "fleet_size": 12,
+          "coverage": "Estado de México",
+          "priority": "high",
+          "status": "scheduled",
+          "meeting_date": "2025-11-05 17:00"
+        }
+      ]
+    },
+    
+    "refaccionarias": {
+      "denue_code": "468411", 
+      "target": 150,
+      "commission": "5%",
+      "avg_ticket": 800,
+      "prospects": [
+        {
+          "id": "refac_001",
+          "name": "Refaccionaria La Central",
+          "location": "CDMX Centro",
+          "address": "Eje Central Lázaro Cárdenas 567",
+          "contact": "555-678-9012",
+          "services": ["Autopartes originales", "Refacciones", "Accesorios"],
+          "inventory": "amplio",
+          "delivery": true,
+          "priority": "high",
+          "status": "scheduled",
+          "meeting_date": "2025-11-04 14:00"
+        },
+        {
+          "id": "refac_002",
+          "name": "Mundo Motor",
+          "location": "Atizapán, Estado de México",
+          "address": "Av. Adolfo López Mateos 890",
+          "contact": "555-789-0123", 
+          "services": ["Distribución mayorista", "Importaciones", "Catálogo amplio"],
+          "inventory": "especializado",
+          "delivery": true,
+          "priority": "medium",
+          "status": "scheduled",
+          "meeting_date": "2025-11-06 12:00"
+        }
+      ]
+    },
+    
+    "servicios_especializados": {
+      "denue_code": "811112",
+      "target": 50,
+      "commission": "10%", 
+      "avg_ticket": 1500,
+      "prospects": [
+        {
+          "id": "esp_001",
+          "name": "Eléctrico Automotriz Chispa",
+          "location": "Gustavo A. Madero, CDMX",
+          "address": "Av. Insurgentes Norte 234",
+          "contact": "555-890-1234",
+          "services": ["Sistemas eléctricos", "Computadoras", "Sensores"],
+          "specialization": "Diagnóstico electrónico",
+          "certification": "ASE Certified",
+          "priority": "high",
+          "status": "scheduled",
+          "meeting_date": "2025-11-05 15:00"
+        },
+        {
+          "id": "esp_002",
+          "name": "Carrocerías del Norte",
+          "location": "Tultitlán, Estado de México",
+          "address": "Av. Tultitlán 456, Col. San Pablo",
+          "contact": "555-901-2345",
+          "services": ["Hojalatería", "Pintura", "Enderezado"],
+          "specialization": "Reparación de colisiones",
+          "equipment": "Cabina de pintura",
+          "priority": "medium",
+          "status": "scheduled", 
+          "meeting_date": "2025-11-06 09:30"
+        }
+      ]
+    }
+  },
+  
+  "geographic_distribution": {
+    "cdmx": {
+      "prospects": 150,
+      "percentage": 30,
+      "priority_areas": ["Centro", "Norte", "Oriente"]
+    },
+    "estado_mexico": {
+      "prospects": 250,
+      "percentage": 50,
+      "priority_areas": ["Naucalpan", "Tlalnepantla", "Ecatepec", "Nezahualcóyotl"]
+    },
+    "guadalajara": {
+      "prospects": 50,
+      "percentage": 10,
+      "priority_areas": ["Zapopan", "Tlaquepaque", "Tonalá"]
+    },
+    "monterrey": {
+      "prospects": 50,
+      "percentage": 10,
+      "priority_areas": ["San Nicolás", "Guadalupe", "Apodaca"]
+    }
+  },
+  
+  "contact_strategy": {
+    "phase_1": {
+      "duration": "2 weeks",
+      "method": "Phone calls + WhatsApp",
+      "target": 100,
+      "conversion_expected": "30%"
+    },
+    "phase_2": {
+      "duration": "2 weeks", 
+      "method": "In-person visits",
+      "target": 50,
+      "conversion_expected": "60%"
+    },
+    "phase_3": {
+      "duration": "1 week",
+      "method": "Group presentations",
+      "target": 200,
+      "conversion_expected": "20%"
+    }
+  },
+  
+  "revenue_projections": {
+    "month_1": {
+      "partners_signed": 50,
+      "services_referred": 150,
+      "commission_revenue": 15000
+    },
+    "month_3": {
+      "partners_signed": 150,
+      "services_referred": 450,
+      "commission_revenue": 45000
+    },
+    "month_6": {
+      "partners_signed": 300,
+      "services_referred": 900,
+      "commission_revenue": 90000
+    }
+  }
+}

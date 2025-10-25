@@ -1,0 +1,19 @@
+# Asistente Vial México - Orquestación Multiagente
+deployment:
+  phases: 4
+  total_investment: $125,000
+  
+agents:
+  diagnostic:
+    monthly_cost: $500
+  emergency:
+    monthly_cost: $200
+  commercial:
+    monthly_cost: $1000
+  institutional:
+    monthly_cost: $500
+
+kpis:
+  target_users: 50000
+  target_partners: 500
+  target_revenue: $125000/month

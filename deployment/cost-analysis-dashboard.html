@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Arquitecto: DIOS | Implementador: Jorge Hernández -->
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Análisis de Costos Asistencia Vial México</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1b2a; --bg-2: #1b263b; --text: #e0e1dd;
+            --accent: #00bfa6; --coral: #ff7043; --yellow: #f59e0b;
+            --radius: 12px; --shadow: 0 8px 24px rgba(0,0,0,.2);
+        }
+        body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { font-family: Montserrat; color: var(--accent); margin-bottom: 32px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 32px; }
+        .card { background: var(--bg-2); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+        .metric { font-size: 32px; font-weight: 600; color: var(--accent); margin: 8px 0; }
+        .label { color: #a8b3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .chart-container { height: 300px; margin: 16px 0; }
+        .timeline { border-left: 4px solid var(--yellow); padding-left: 16px; margin: 16px 0; }
+        .cost-breakdown { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 16px; align-items: center; padding: 12px 0; border-bottom: 1px solid #415a77; }
+        .total-row { background: var(--bg); font-weight: 600; border-radius: 8px; padding: 16px; }
+        .meeting-card { background: var(--bg-2); border-left: 4px solid var(--coral); padding: 16px; margin: 8px 0; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📱 Dashboard - Análisis de Costos Completo</h1>
+        <div style="background: var(--yellow); color: #1a1a1a; padding: 16px; border-radius: 8px; margin-bottom: 32px; text-align: center;">
+            <strong>Inversión Inicial: $51,750 | Año 1: $330,000 | ROI Mes 12: 18%</strong>
+        </div>
+        
+        <div class="grid">
+            <div class="card">
+                <div class="label">Inversión Inicial</div>
+                <div class="metric">$51,750</div>
+                <div style="color: #a8b3c7;">Lanzamiento Google Play</div>
+            </div>
+            <div class="card">
+                <div class="label">Mantenimiento Mensual</div>
+                <div class="metric">$8,500</div>
+                <div style="color: #a8b3c7;">Hosting + Updates + Soporte</div>
+            </div>
+            <div class="card">
+                <div class="label">Costo Año 1</div>
+                <div class="metric" style="color: var(--yellow);">$330K</div>
+                <div style="color: #a8b3c7;">Inversión + Mantenimiento</div>
+            </div>
+            <div class="card">
+                <div class="label">ROI Mes 12</div>
+                <div class="metric" style="color: var(--coral);">18%</div>
+                <div style="color: #a8b3c7;">$68K ganancia neta</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Costos Iniciales</h3>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Proyección ROI 12 Meses</h3>
+                <div class="chart-container">
+                    <canvas id="roiChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>💰 Análisis Financiero Año 1</h3>
+            <div class="grid" style="margin-top: 16px;">
+                <div style="background: var(--bg); padding: 16px; border-radius: 8px;">
+                    <div class="label">Punto de Equilibrio</div>
+                    <div class="metric" style="font-size: 24px;">Mes 8</div>
+                    <div style="color: #a8b3c7;">8,500 usuarios activos</div>
+                </div>
+                <div style="background: var(--bg); padding: 16px; border-radius: 8px;">
+                    <div class="label">Ingresos Mes 6</div>
+                    <div class="metric" style="font-size: 24px; color: var(--accent);">$125K</div>
+                    <div style="color: #a8b3c7;">5,000 usuarios</div>
+                </div>
+                <div style="background: var(--bg); padding: 16px; border-radius: 8px;">
+                    <div class="label">Ingresos Mes 12</div>
+                    <div class="metric" style="font-size: 24px; color: var(--accent);">$450K</div>
+                    <div style="color: #a8b3c7;">15,000 usuarios</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>📊 Fuentes de Ingreso</h3>
+            <div class="timeline">
+                <h4>Suscripciones Premium ($99/mes)</h4>
+                <div class="cost-breakdown">
+                    <span>Mes 6: 400 suscriptores (8% conversión)</span>
+                    <span>$39,600</span>
+                    <span style="color: var(--accent);">32%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Mes 12: 1,200 suscriptores</span>
+                    <span>$118,800</span>
+                    <span style="color: var(--accent);">26%</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Comisiones Aseguradoras ($50/usuario)</h4>
+                <div class="cost-breakdown">
+                    <span>Mes 6: 750 usuarios (15% conversión)</span>
+                    <span>$37,500</span>
+                    <span style="color: var(--yellow);">30%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Mes 12: 2,250 usuarios</span>
+                    <span>$112,500</span>
+                    <span style="color: var(--yellow);">25%</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Comisiones Grúas ($80/servicio)</h4>
+                <div class="cost-breakdown">
+                    <span>Mes 6: 600 servicios/mes</span>
+                    <span>$48,000</span>
+                    <span style="color: var(--coral);">38%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Mes 12: 2,400 servicios/mes</span>
+                    <span>$192,000</span>
+                    <span style="color: var(--coral);">43%</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Publicidad (CPM $25)</h4>
+                <div class="cost-breakdown">
+                    <span>Mes 12: 100K impresiones/mes</span>
+                    <span>$26,700</span>
+                    <span style="color: var(--accent);">6%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🔧 Costos Mensuales de Mantenimiento ($8,500)</h3>
+            <div class="cost-breakdown">
+                <span>Hosting y servidores (AWS/GCP)</span>
+                <span>$2,500</span>
+                <span style="color: var(--accent);">29%</span>
+            </div>
+            <div class="cost-breakdown">
+                <span>Actualizaciones Google Play</span>
+                <span>$1,500</span>
+                <span style="color: var(--accent);">18%</span>
+            </div>
+            <div class="cost-breakdown">
+                <span>Corrección de bugs y soporte</span>
+                <span>$2,000</span>
+                <span style="color: var(--accent);">24%</span>
+            </div>
+            <div class="cost-breakdown">
+                <span>Actualización de contenido</span>
+                <span>$1,200</span>
+                <span style="color: var(--accent);">14%</span>
+            </div>
+            <div class="cost-breakdown">
+                <span>Herramientas de monitoreo</span>
+                <span>$650</span>
+                <span style="color: var(--accent);">8%</span>
+            </div>
+            <div class="cost-breakdown">
+                <span>Backup y almacenamiento</span>
+                <span>$500</span>
+                <span style="color: var(--accent);">6%</span>
+            </div>
+            <div class="cost-breakdown">
+                <span>Renovación SSL/Dominio</span>
+                <span>$150</span>
+                <span style="color: var(--accent);">2%</span>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>Desglose Detallado - Google Play</h3>
+            
+            <div class="timeline">
+                <h4>Costos Técnicos (20% - $10,350 MXN)</h4>
+                <div class="cost-breakdown">
+                    <span>Google Play Developer Account</span>
+                    <span>$450 MXN</span>
+                    <span style="color: var(--accent);">4%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Certificados SSL y dominio</span>
+                    <span>$1,800 MXN</span>
+                    <span style="color: var(--accent);">17%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Testing en dispositivos físicos</span>
+                    <span>$5,400 MXN</span>
+                    <span style="color: var(--accent);">52%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Herramientas de desarrollo</span>
+                    <span>$2,700 MXN</span>
+                    <span style="color: var(--accent);">26%</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h4>Contenido y Assets (26% - $13,500 MXN)</h4>
+                <div class="cost-breakdown">
+                    <span>Iconos profesionales adaptativos</span>
+                    <span>$3,600 MXN</span>
+                    <span style="color: var(--yellow);">27%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Capturas de pantalla (8 optimizadas)</span>
+                    <span>$2,700 MXN</span>
+                    <span style="color: var(--yellow);">20%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Video preview (30 segundos)</span>
+                    <span>$5,400 MXN</span>
+                    <span style="color: var(--yellow);">40%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Descripción y copywriting ASO</span>
+                    <span>$1,800 MXN</span>
+                    <span style="color: var(--yellow);">13%</span>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <h4>Legal y Compliance (23% - $11,700 MXN)</h4>
+                <div class="cost-breakdown">
+                    <span>Política de privacidad LFPDPPP</span>
+                    <span>$5,400 MXN</span>
+                    <span style="color: var(--coral);">46%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Términos y condiciones</span>
+                    <span>$3,600 MXN</span>
+                    <span style="color: var(--coral);">31%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Revisión legal compliance</span>
+                    <span>$2,700 MXN</span>
+                    <span style="color: var(--coral);">23%</span>
+                </div>
+            </div>
+            
+            <div class="timeline">
+                <h4>Marketing Inicial (31% - $16,200 MXN)</h4>
+                <div class="cost-breakdown">
+                    <span>Landing page promocional</span>
+                    <span>$7,200 MXN</span>
+                    <span style="color: var(--accent);">44%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Material promocional digital</span>
+                    <span>$3,600 MXN</span>
+                    <span style="color: var(--accent);">22%</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>PR inicial y contactos medios</span>
+                    <span>$5,400 MXN</span>
+                    <span style="color: var(--accent);">33%</span>
+                </div>
+            </div>
+
+            <div style="background: var(--accent); color: #002b27; padding: 20px; border-radius: 12px; margin-top: 24px; text-align: center;">
+                <h3 style="margin: 0 0 8px 0;">INVERSIÓN INICIAL</h3>
+                <div style="font-size: 36px; font-weight: 700;">$51,750 MXN</div>
+                <div style="margin-top: 8px;">Lanzamiento Google Play Store</div>
+            </div>
+            <div style="background: var(--yellow); color: #1a1a1a; padding: 20px; border-radius: 12px; margin-top: 16px; text-align: center;">
+                <h3 style="margin: 0 0 8px 0;">COSTO TOTAL AÑO 1</h3>
+                <div style="font-size: 36px; font-weight: 700;">$330,000 MXN</div>
+                <div style="margin-top: 8px;">Inversión inicial + 12 meses mantenimiento + marketing</div>
+            </div>
+            <div style="background: var(--coral); color: #fff; padding: 20px; border-radius: 12px; margin-top: 16px; text-align: center;">
+                <h3 style="margin: 0 0 8px 0;">GANANCIA NETA MES 12</h3>
+                <div style="font-size: 36px; font-weight: 700;">$68,250 MXN</div>
+                <div style="margin-top: 8px;">ROI 18% | Break-even mes 8</div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 32px;">
+            <h3>📈 Proyección 3 Años</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+                    <thead>
+                        <tr style="background: var(--bg); border-bottom: 2px solid var(--accent);">
+                            <th style="padding: 12px; text-align: left;">Año</th>
+                            <th style="padding: 12px; text-align: right;">Usuarios</th>
+                            <th style="padding: 12px; text-align: right;">Ingresos</th>
+                            <th style="padding: 12px; text-align: right;">Costos</th>
+                            <th style="padding: 12px; text-align: right;">EBITDA</th>
+                            <th style="padding: 12px; text-align: right;">Margen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #415a77;">
+                            <td style="padding: 12px;">Año 1</td>
+                            <td style="padding: 12px; text-align: right;">15,000</td>
+                            <td style="padding: 12px; text-align: right; color: var(--accent);">$450K</td>
+                            <td style="padding: 12px; text-align: right; color: var(--coral);">$382K</td>
+                            <td style="padding: 12px; text-align: right; color: var(--yellow);">$68K</td>
+                            <td style="padding: 12px; text-align: right;">15%</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #415a77;">
+                            <td style="padding: 12px;">Año 2</td>
+                            <td style="padding: 12px; text-align: right;">50,000</td>
+                            <td style="padding: 12px; text-align: right; color: var(--accent);">$1.5M</td>
+                            <td style="padding: 12px; text-align: right; color: var(--coral);">$900K</td>
+                            <td style="padding: 12px; text-align: right; color: var(--yellow);">$600K</td>
+                            <td style="padding: 12px; text-align: right;">40%</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px;">Año 3</td>
+                            <td style="padding: 12px; text-align: right;">150,000</td>
+                            <td style="padding: 12px; text-align: right; color: var(--accent);">$4.5M</td>
+                            <td style="padding: 12px; text-align: right; color: var(--coral);">$2.25M</td>
+                            <td style="padding: 12px; text-align: right; color: var(--yellow);">$2.25M</td>
+                            <td style="padding: 12px; text-align: right;">50%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 32px;">
+            <h3>🎯 KPIs Clave</h3>
+            <div class="grid" style="margin-top: 16px;">
+                <div style="background: var(--bg); padding: 16px; border-radius: 8px; border-left: 4px solid var(--accent);">
+                    <div class="label">CAC (Costo Adquisición)</div>
+                    <div class="metric" style="font-size: 24px;">$150</div>
+                    <div style="color: #a8b3c7;">Por usuario</div>
+                </div>
+                <div style="background: var(--bg); padding: 16px; border-radius: 8px; border-left: 4px solid var(--yellow);">
+                    <div class="label">LTV (Lifetime Value)</div>
+                    <div class="metric" style="font-size: 24px;">$1,800</div>
+                    <div style="color: #a8b3c7;">Promedio 18 meses</div>
+                </div>
+                <div style="background: var(--bg); padding: 16px; border-radius: 8px; border-left: 4px solid var(--coral);">
+                    <div class="label">LTV/CAC Ratio</div>
+                    <div class="metric" style="font-size: 24px;">12:1</div>
+                    <div style="color: #a8b3c7;">Excelente (>3:1)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 32px; background: linear-gradient(135deg, var(--bg-2) 0%, var(--bg) 100%); border: 2px solid var(--accent);">
+            <h3 style="color: var(--accent);">🚀 Resumen Ejecutivo</h3>
+            <div style="display: grid; gap: 16px; margin-top: 16px;">
+                <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <span>Inversión Total Año 1:</span>
+                    <strong style="color: var(--coral);">$330,000 MXN</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <span>Ingresos Proyectados Año 1:</span>
+                    <strong style="color: var(--accent);">$450,000 MXN</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <span>Ganancia Neta Año 1:</span>
+                    <strong style="color: var(--yellow);">$68,250 MXN</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <span>ROI Año 1:</span>
+                    <strong style="color: var(--accent);">18%</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <span>Break-Even:</span>
+                    <strong style="color: var(--yellow);">Mes 8</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <span>Proyección Año 3:</span>
+                    <strong style="color: var(--accent);">$2.25M MXN EBITDA</strong>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 32px;">
+            <h3>📊 Comparativa con Competencia</h3>
+            <div style="overflow-x: auto; margin-top: 16px;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="background: var(--bg); border-bottom: 2px solid var(--accent);">
+                            <th style="padding: 12px; text-align: left;">Característica</th>
+                            <th style="padding: 12px; text-align: center;">Salvame</th>
+                            <th style="padding: 12px; text-align: center;">Competidor A</th>
+                            <th style="padding: 12px; text-align: center;">Competidor B</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #415a77;">
+                            <td style="padding: 12px;">4 Agentes IA Especializados</td>
+                            <td style="padding: 12px; text-align: center; color: var(--accent);">✅</td>
+                            <td style="padding: 12px; text-align: center; color: var(--coral);">❌</td>
+                            <td style="padding: 12px; text-align: center; color: var(--coral);">❌</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #415a77;">
+                            <td style="padding: 12px;">Modo Offline Completo</td>
+                            <td style="padding: 12px; text-align: center; color: var(--accent);">✅</td>
+                            <td style="padding: 12px; text-align: center; color: var(--coral);">❌</td>
+                            <td style="padding: 12px; text-align: center; color: var(--yellow);">⚠️</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #415a77;">
+                            <td style="padding: 12px;">Precio Mensual</td>
+                            <td style="padding: 12px; text-align: center; color: var(--accent);">$99</td>
+                            <td style="padding: 12px; text-align: center;">$199</td>
+                            <td style="padding: 12px; text-align: center;">$149</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #415a77;">
+                            <td style="padding: 12px;">Tiempo Respuesta</td>
+                            <td style="padding: 12px; text-align: center; color: var(--accent);">&lt;2 min</td>
+                            <td style="padding: 12px; text-align: center;">5-10 min</td>
+                            <td style="padding: 12px; text-align: center;">3-5 min</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px;">Cobertura Nacional</td>
+                            <td style="padding: 12px; text-align: center; color: var(--accent);">✅</td>
+                            <td style="padding: 12px; text-align: center; color: var(--yellow);">⚠️</td>
+                            <td style="padding: 12px; text-align: center; color: var(--yellow);">⚠️</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card" style="margin-top: 32px;">
+            <h3>💻 Fase 1: Desarrollo MVP (Semanas 1-12)</h3>
+            <div class="timeline">
+                <h4>Desarrollo Backend ($120K)</h4>
+                <div class="cost-breakdown">
+                    <span>API REST + WebSocket (Node.js)</span>
+                    <span>$40K</span>
+                    <span style="color: var(--accent);">Semanas 1-4</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Base de datos (PostgreSQL + Redis)</span>
+                    <span>$25K</span>
+                    <span style="color: var(--accent);">Semanas 2-5</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Integración 4 Agentes IA (GPT-4)</span>
+                    <span>$55K</span>
+                    <span style="color: var(--accent);">Semanas 3-8</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Desarrollo Frontend ($90K)</h4>
+                <div class="cost-breakdown">
+                    <span>App React Native (iOS/Android)</span>
+                    <span>$60K</span>
+                    <span style="color: var(--yellow);">Semanas 4-10</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Dashboard Operadores (React)</span>
+                    <span>$30K</span>
+                    <span style="color: var(--yellow);">Semanas 6-9</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Infraestructura ($45K)</h4>
+                <div class="cost-breakdown">
+                    <span>Setup AWS (EC2, RDS, S3, CloudFront)</span>
+                    <span>$20K</span>
+                    <span style="color: var(--coral);">Semanas 1-3</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>CI/CD + Monitoreo (GitHub Actions)</span>
+                    <span>$15K</span>
+                    <span style="color: var(--coral);">Semanas 4-6</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Seguridad + Compliance LFPDPPP</span>
+                    <span>$10K</span>
+                    <span style="color: var(--coral);">Semanas 7-9</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Integraciones ($30K)</h4>
+                <div class="cost-breakdown">
+                    <span>Mapbox + Geolocalización</span>
+                    <span>$10K</span>
+                    <span style="color: var(--accent);">Semanas 5-7</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Twilio (SMS/Llamadas)</span>
+                    <span>$8K</span>
+                    <span style="color: var(--accent);">Semanas 6-8</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Pasarelas de pago (Stripe/Conekta)</span>
+                    <span>$12K</span>
+                    <span style="color: var(--accent);">Semanas 9-11</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Legal + Admin ($45K)</h4>
+                <div class="cost-breakdown">
+                    <span>Política privacidad + Términos</span>
+                    <span>$15K</span>
+                    <span style="color: var(--yellow);">Semanas 1-4</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Registro marca + Patentes</span>
+                    <span>$20K</span>
+                    <span style="color: var(--yellow);">Semanas 1-8</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Constitución empresa (S.A. de C.V.)</span>
+                    <span>$10K</span>
+                    <span style="color: var(--yellow);">Semanas 1-3</span>
+                </div>
+            </div>
+            <div style="background: var(--accent); color: #002b27; padding: 20px; border-radius: 12px; margin-top: 16px; text-align: center;">
+                <h4 style="margin: 0 0 8px 0;">TOTAL DESARROLLO MVP</h4>
+                <div style="font-size: 32px; font-weight: 700;">$330,000 MXN</div>
+                <div style="margin-top: 8px;">12 semanas | Entregable: App funcional completa</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 32px;">
+            <h3>🧪 Fase 2: Testing y QA (Semanas 13-16)</h3>
+            <div class="timeline">
+                <h4>Testing Funcional ($25K)</h4>
+                <div class="cost-breakdown">
+                    <span>Testing manual (10 dispositivos)</span>
+                    <span>$10K</span>
+                    <span style="color: var(--accent);">Semanas 13-14</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Testing automatizado (Selenium/Appium)</span>
+                    <span>$15K</span>
+                    <span style="color: var(--accent);">Semanas 13-16</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Beta Testing ($35K)</h4>
+                <div class="cost-breakdown">
+                    <span>Reclutamiento 1,000 beta testers</span>
+                    <span>$10K</span>
+                    <span style="color: var(--yellow);">Semanas 14-15</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Incentivos beta testers ($25/usuario)</span>
+                    <span>$25K</span>
+                    <span style="color: var(--yellow);">Semanas 14-16</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Corrección de Bugs ($20K)</h4>
+                <div class="cost-breakdown">
+                    <span>Hotfixes críticos</span>
+                    <span>$12K</span>
+                    <span style="color: var(--coral);">Semanas 15-16</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Optimizaciones de performance</span>
+                    <span>$8K</span>
+                    <span style="color: var(--coral);">Semanas 15-16</span>
+                </div>
+            </div>
+            <div style="background: var(--yellow); color: #1a1a1a; padding: 20px; border-radius: 12px; margin-top: 16px; text-align: center;">
+                <h4 style="margin: 0 0 8px 0;">TOTAL TESTING</h4>
+                <div style="font-size: 32px; font-weight: 700;">$80,000 MXN</div>
+                <div style="margin-top: 8px;">4 semanas | 1,000 beta testers</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 32px;">
+            <h3>🚀 Fase 3: Despliegue (Semanas 17-18)</h3>
+            <div class="timeline">
+                <h4>Publicación Stores ($15K)</h4>
+                <div class="cost-breakdown">
+                    <span>Google Play (cuenta + assets)</span>
+                    <span>$5K</span>
+                    <span style="color: var(--accent);">Semana 17</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>App Store (cuenta + assets)</span>
+                    <span>$10K</span>
+                    <span style="color: var(--accent);">Semana 17</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Infraestructura Producción ($25K)</h4>
+                <div class="cost-breakdown">
+                    <span>Escalamiento servidores (10K usuarios)</span>
+                    <span>$15K</span>
+                    <span style="color: var(--yellow);">Semana 17</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>CDN + Backup redundante</span>
+                    <span>$10K</span>
+                    <span style="color: var(--yellow);">Semana 17</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Monitoreo 24/7 ($10K)</h4>
+                <div class="cost-breakdown">
+                    <span>Setup Datadog + PagerDuty</span>
+                    <span>$5K</span>
+                    <span style="color: var(--coral);">Semana 17</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Equipo soporte inicial (2 personas)</span>
+                    <span>$5K</span>
+                    <span style="color: var(--coral);">Semanas 17-18</span>
+                </div>
+            </div>
+            <div style="background: var(--coral); color: #fff; padding: 20px; border-radius: 12px; margin-top: 16px; text-align: center;">
+                <h4 style="margin: 0 0 8px 0;">TOTAL DESPLIEGUE</h4>
+                <div style="font-size: 32px; font-weight: 700;">$50,000 MXN</div>
+                <div style="margin-top: 8px;">2 semanas | Lanzamiento público</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 32px;">
+            <h3>📣 Fase 4: Marketing y Adquisición (Meses 1-6)</h3>
+            <div class="timeline">
+                <h4>Marketing Digital ($90K)</h4>
+                <div class="cost-breakdown">
+                    <span>Google Ads + Facebook Ads</span>
+                    <span>$50K</span>
+                    <span style="color: var(--accent);">$8.3K/mes</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>SEO + Content Marketing</span>
+                    <span>$20K</span>
+                    <span style="color: var(--accent);">$3.3K/mes</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Influencers + PR</span>
+                    <span>$20K</span>
+                    <span style="color: var(--accent);">$3.3K/mes</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Alianzas Comerciales ($60K)</h4>
+                <div class="cost-breakdown">
+                    <span>Aseguradoras (3 pilotos)</span>
+                    <span>$30K</span>
+                    <span style="color: var(--yellow);">$5K/mes</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Red talleres (50 talleres)</span>
+                    <span>$20K</span>
+                    <span style="color: var(--yellow);">$3.3K/mes</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Grúas (20 proveedores)</span>
+                    <span>$10K</span>
+                    <span style="color: var(--yellow);">$1.7K/mes</span>
+                </div>
+            </div>
+            <div class="timeline">
+                <h4>Eventos y Activaciones ($30K)</h4>
+                <div class="cost-breakdown">
+                    <span>Eventos automotrices (3 eventos)</span>
+                    <span>$15K</span>
+                    <span style="color: var(--coral);">$2.5K/mes</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Activaciones en gasolineras</span>
+                    <span>$10K</span>
+                    <span style="color: var(--coral);">$1.7K/mes</span>
+                </div>
+                <div class="cost-breakdown">
+                    <span>Material promocional (flyers, banners)</span>
+                    <span>$5K</span>
+                    <span style="color: var(--coral);">$0.8K/mes</span>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, var(--accent) 0%, var(--yellow) 100%); color: #1a1a1a; padding: 20px; border-radius: 12px; margin-top: 16px; text-align: center;">
+                <h4 style="margin: 0 0 8px 0;">TOTAL MARKETING (6 MESES)</h4>
+                <div style="font-size: 32px; font-weight: 700;">$180,000 MXN</div>
+                <div style="margin-top: 8px;">$30K/mes | Meta: 5,000 usuarios mes 6</div>
+            </div>
+        </div>
+
+        <div class="card" style="margin-top: 32px; background: linear-gradient(135deg, #1b263b 0%, #0d1b2a 100%); border: 3px solid var(--accent);">
+            <h3 style="color: var(--accent);">📊 Resumen Total Inversión Año 1</h3>
+            <div style="display: grid; gap: 12px; margin-top: 16px;">
+                <div style="display: flex; justify-content: space-between; padding: 16px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                    <span><strong>Desarrollo MVP (12 semanas)</strong></span>
+                    <strong style="color: var(--accent);">$330,000</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 16px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--yellow);">
+                    <span><strong>Testing y QA (4 semanas)</strong></span>
+                    <strong style="color: var(--yellow);">$80,000</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 16px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--coral);">
+                    <span><strong>Despliegue (2 semanas)</strong></span>
+                    <strong style="color: var(--coral);">$50,000</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 16px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--accent);">
+                    <span><strong>Marketing (6 meses)</strong></span>
+                    <strong style="color: var(--accent);">$180,000</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 16px; background: var(--bg-2); border-radius: 8px; border-left: 4px solid var(--yellow);">
+                    <span><strong>Mantenimiento (12 meses)</strong></span>
+                    <strong style="color: var(--yellow);">$102,000</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 24px; background: var(--accent); color: #002b27; border-radius: 12px; margin-top: 8px;">
+                    <span style="font-size: 20px;"><strong>INVERSIÓN TOTAL AÑO 1</strong></span>
+                    <strong style="font-size: 28px;">$742,000 MXN</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align: center; padding: 32px; color: #a8b3c7; margin-top: 48px; border-top: 1px solid #415a77;">
+        <p><strong>Salvame - Asistencia Vial Inteligente</strong></p>
+        <p>Dashboard actualizado: 30 Enero 2025 | Versión: 2.0 Completa</p>
+        <p>Contacto: jorge@asistenciavial.mx | GitHub: github.com/Ente56298/Salvame</p>
+        <p style="margin-top: 16px; font-size: 12px;">Inversión Año 1: $742K | ROI Proyectado: 18% | Break-even: Mes 8</p>
+    </footer>
+
+    <script>
+        // Gráfico de costos iniciales
+        const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+        new Chart(categoryCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Técnicos', 'Contenido', 'Legal', 'Marketing'],
+                datasets: [{
+                    data: [10350, 13500, 11700, 16200],
+                    backgroundColor: ['#00bfa6', '#f59e0b', '#ff7043', '#415a77'],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#e0e1dd',
+                            callback: function(value) { return '$' + (value/1000) + 'K'; }
+                        },
+                        grid: { color: '#415a77' }
+                    },
+                    x: { 
+                        ticks: { color: '#e0e1dd' },
+                        grid: { color: '#415a77' }
+                    }
+                }
+            }
+        });
+
+        // Gráfico ROI 12 meses
+        const roiCtx = document.getElementById('roiChart').getContext('2d');
+        new Chart(roiCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mes 1', 'Mes 3', 'Mes 6', 'Mes 8', 'Mes 12'],
+                datasets: [
+                    {
+                        label: 'Ingresos',
+                        data: [15000, 50000, 125000, 220000, 450000],
+                        borderColor: '#00bfa6',
+                        backgroundColor: 'rgba(0, 191, 166, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Costos',
+                        data: [60250, 77250, 102750, 128250, 381750],
+                        borderColor: '#ff7043',
+                        backgroundColor: 'rgba(255, 112, 67, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: { color: '#e0e1dd' }
+                    }
+                },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#e0e1dd',
+                            callback: function(value) { return '$' + (value/1000) + 'K'; }
+                        },
+                        grid: { color: '#415a77' }
+                    },
+                    x: { 
+                        ticks: { color: '#e0e1dd' },
+                        grid: { color: '#415a77' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

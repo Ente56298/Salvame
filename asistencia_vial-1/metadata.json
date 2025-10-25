@@ -1,0 +1,7 @@
+{
+  "name": "Asistente Vial México",
+  "description": "Una aplicación de asistente vial para las carreteras de México, que ofrece seguimiento en tiempo real, SOS, búsqueda de refacciones y más, todo impulsado por la IA de Gemini.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

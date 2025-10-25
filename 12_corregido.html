@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Vial México</title>
+    
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Google+Sans+Text);
+
+        html {
+            font-family: 'Google Sans Text', 'Google Sans';
+            font-size: 14px;
+            color-scheme: light dark;
+            background: light-dark(white, black);
+            color: light-dark(black, white);
+        }
+    </style>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "react": "https://esm.sh/react@18",
+            "react-dom/client": "https://esm.sh/react-dom@18/client",
+            "@google/genai": "https://esm.sh/@google/genai@1.19.0"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="root"></div>
+    
+    <script type="module">
+        import React from 'react';
+        import { createRoot } from 'react-dom/client';
+        
+        const App = () => {
+            return React.createElement('div', {
+                style: { 
+                    padding: '20px', 
+                    textAlign: 'center',
+                    minHeight: '100vh',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    flexDirection: 'column'
+                }
+            }, [
+                React.createElement('h1', { key: 'title' }, 'Asistente Vial México'),
+                React.createElement('p', { key: 'desc' }, 'Su copiloto inteligente en el camino')
+            ]);
+        };
+        
+        const rootElement = document.getElementById('root');
+        if (!rootElement) {
+            throw new Error("No se pudo encontrar el elemento raíz para montar la aplicación.");
+        }
+        
+        const root = createRoot(rootElement);
+        root.render(React.createElement(App));
+    </script>
+</body>
+
+</html>

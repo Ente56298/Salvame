@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Asistente Vial México</title>
+    <style>
+        :root {
+            --bg: #0d1b2a; --bg-2: #1b263b; --text: #e0e1dd;
+            --accent: #00bfa6; --coral: #ff7043;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .login-container { background: var(--bg-2); padding: 40px; border-radius: 16px; width: 100%; max-width: 400px; box-shadow: 0 20px 40px rgba(0,0,0,.3); }
+        .logo { text-align: center; margin-bottom: 30px; }
+        .logo h1 { color: var(--accent); font-size: 28px; margin-bottom: 5px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; color: #a8b3c7; font-size: 14px; }
+        .form-group input { width: 100%; padding: 12px; border: 1px solid #415a77; border-radius: 8px; background: var(--bg); color: var(--text); font-size: 16px; }
+        .form-group input:focus { outline: none; border-color: var(--accent); }
+        .btn { width: 100%; background: var(--accent); color: #002b27; border: none; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        .btn:hover { opacity: 0.9; }
+        .btn-secondary { background: transparent; border: 1px solid var(--accent); color: var(--accent); }
+        .divider { text-align: center; margin: 20px 0; color: #a8b3c7; }
+        .user-type { display: flex; gap: 10px; margin-bottom: 20px; }
+        .user-type button { flex: 1; padding: 10px; border: 1px solid #415a77; background: transparent; color: var(--text); border-radius: 8px; cursor: pointer; }
+        .user-type button.active { background: var(--accent); color: #002b27; border-color: var(--accent); }
+        .error { background: var(--coral); color: white; padding: 10px; border-radius: 8px; margin-bottom: 20px; display: none; }
+        .success { background: var(--accent); color: #002b27; padding: 10px; border-radius: 8px; margin-bottom: 20px; display: none; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="logo">
+            <h1>🚗 Asistente Vial</h1>
+            <p>México</p>
+        </div>
+
+        <div id="error-message" class="error"></div>
+        <div id="success-message" class="success"></div>
+
+        <!-- Login Form -->
+        <form id="login-form">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="login-email" required>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="login-password" required>
+            </div>
+            <button type="submit" class="btn">Iniciar Sesión</button>
+        </form>
+
+        <div class="divider">o</div>
+
+        <button class="btn btn-secondary" onclick="showRegister()">Crear Cuenta</button>
+
+        <!-- Register Form (Hidden) -->
+        <form id="register-form" style="display: none;">
+            <div class="user-type">
+                <button type="button" class="active" onclick="setUserType('user')">Usuario</button>
+                <button type="button" onclick="setUserType('partner')">Socio</button>
+            </div>
+            
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" id="register-name" required>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="register-email" required>
+            </div>
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" id="register-phone" required>
+            </div>
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" id="register-password" required>
+            </div>
+            <button type="submit" class="btn">Registrarse</button>
+            <button type="button" class="btn btn-secondary" onclick="showLogin()">Volver al Login</button>
+        </form>
+
+        <!-- Demo Access -->
+        <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #415a77; text-align: center;">
+            <p style="color: #a8b3c7; font-size: 14px; margin-bottom: 15px;">Acceso Demo</p>
+            <button class="btn" onclick="demoLogin('user')" style="margin-bottom: 10px;">Demo Usuario</button>
+            <button class="btn btn-secondary" onclick="demoLogin('admin')">Demo Admin</button>
+        </div>
+    </div>
+
+    <script>
+        let currentUserType = 'user';
+
+        function showRegister() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('register-form').style.display = 'block';
+        }
+
+        function showLogin() {
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('register-form').style.display = 'none';
+        }
+
+        function setUserType(type) {
+            currentUserType = type;
+            document.querySelectorAll('.user-type button').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => errorDiv.style.display = 'none', 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success-message');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+            setTimeout(() => successDiv.style.display = 'none', 3000);
+        }
+
+        // Login form handler
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                if (email === 'admin@asistentevial.mx' && password === 'admin123') {
+                    localStorage.setItem('user', JSON.stringify({
+                        id: 1,
+                        email: email,
+                        name: 'Administrador',
+                        user_type: 'admin'
+                    }));
+                    localStorage.setItem('token', 'demo-admin-token');
+                    window.location.href = 'complete-app-view.html';
+                } else if (email === 'user@demo.com' && password === 'user123') {
+                    localStorage.setItem('user', JSON.stringify({
+                        id: 2,
+                        email: email,
+                        name: 'Usuario Demo',
+                        user_type: 'user'
+                    }));
+                    localStorage.setItem('token', 'demo-user-token');
+                    window.location.href = 'complete-app-view.html';
+                } else {
+                    showError('Credenciales inválidas. Usa las cuentas demo.');
+                }
+            } catch (error) {
+                showError('Error al iniciar sesión');
+            }
+        });
+
+        // Register form handler
+        document.getElementById('register-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const phone = document.getElementById('register-phone').value;
+            const password = document.getElementById('register-password').value;
+
+            try {
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Simulate successful registration
+                showSuccess('Cuenta creada exitosamente. Ahora puedes iniciar sesión.');
+                showLogin();
+            } catch (error) {
+                showError('Error al crear la cuenta');
+            }
+        });
+
+        // Demo login
+        function demoLogin(type) {
+            if (type === 'admin') {
+                document.getElementById('login-email').value = 'admin@asistentevial.mx';
+                document.getElementById('login-password').value = 'admin123';
+            } else {
+                document.getElementById('login-email').value = 'user@demo.com';
+                document.getElementById('login-password').value = 'user123';
+            }
+        }
+
+        // Check if already logged in
+        if (localStorage.getItem('token')) {
+            window.location.href = 'complete-app-view.html';
+        }
+    </script>
+</body>
+</html>

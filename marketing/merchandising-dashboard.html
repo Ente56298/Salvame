@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Merchandising y Socios</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1b2a; --bg-2: #1b263b; --text: #e0e1dd;
+            --accent: #00bfa6; --coral: #ff7043; --yellow: #f59e0b; --purple: #8b5cf6;
+            --radius: 12px; --shadow: 0 8px 24px rgba(0,0,0,.2);
+        }
+        body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { font-family: Montserrat; color: var(--accent); margin-bottom: 32px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 32px; }
+        .card { background: var(--bg-2); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+        .metric { font-size: 32px; font-weight: 600; color: var(--accent); margin: 8px 0; }
+        .label { color: #a8b3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .chart-container { height: 300px; margin: 16px 0; }
+        .meeting-card { background: var(--bg); border-left: 4px solid var(--coral); padding: 16px; margin: 8px 0; border-radius: 8px; }
+        .partner-card { background: var(--bg); border-left: 4px solid var(--yellow); padding: 12px; margin: 6px 0; border-radius: 6px; font-size: 14px; }
+        .status-badge { padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .status-scheduled { background: var(--yellow); color: #1a1a1a; }
+        .status-completed { background: var(--accent); color: #1a1a1a; }
+        .progress-bar { background: #415a77; height: 8px; border-radius: 4px; overflow: hidden; margin: 8px 0; }
+        .progress-fill { background: var(--accent); height: 100%; transition: width 0.3s ease; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🛍️ Dashboard - Merchandising y Socios</h1>
+        <div style="background: var(--purple); color: white; padding: 16px; border-radius: 8px; margin-bottom: 32px; text-align: center;">
+            <strong>Campaña Activa: Noviembre 2025 | Meta: 500 Socios | Presupuesto: $153,000 MXN</strong>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="label">Presupuesto Merchandising</div>
+                <div class="metric">$153,000 MXN</div>
+                <div style="color: #a8b3c7;">Oct-Dic 2025</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 35%;"></div>
+                </div>
+                <div style="font-size: 12px; color: #a8b3c7;">35% ejecutado</div>
+            </div>
+            <div class="card">
+                <div class="label">Socios Registrados</div>
+                <div class="metric">47</div>
+                <div style="color: #a8b3c7;">Meta: 500 socios</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 9.4%;"></div>
+                </div>
+                <div style="font-size: 12px; color: #a8b3c7;">9.4% completado</div>
+            </div>
+            <div class="card">
+                <div class="label">Reuniones Programadas</div>
+                <div class="metric" style="color: var(--coral);">15</div>
+                <div style="color: #a8b3c7;">Noviembre 2025</div>
+            </div>
+            <div class="card">
+                <div class="label">Conversión Estimada</div>
+                <div class="metric" style="color: var(--yellow);">25%</div>
+                <div style="color: #a8b3c7;">200 socios proyectados</div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Distribución de Socios</h3>
+                <div class="chart-container">
+                    <canvas id="partnersChart"></canvas>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Presupuesto Merchandising</h3>
+                <div class="chart-container">
+                    <canvas id="budgetChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>📅 Próximas Reuniones - Noviembre</h3>
+                <div class="meeting-card">
+                    <strong>Lunes 4 Nov</strong><br>
+                    09:00 - Taller "El Güero" (Naucalpan)<br>
+                    11:00 - Grúas Rápidas 24/7 (Tlalnepantla)<br>
+                    14:00 - Refaccionaria "La Central" (CDMX)
+                </div>
+                <div class="meeting-card">
+                    <strong>Martes 5 Nov</strong><br>
+                    10:00 - Taller "Los Compadres" (Ecatepec)<br>
+                    15:00 - Eléctrico "Chispa" (Gustavo A. Madero)<br>
+                    17:00 - Grúas "El Rescate" (Cuautitlán)
+                </div>
+                <div class="meeting-card">
+                    <strong>Jueves 14 Nov</strong><br>
+                    08:00 - Desayuno Asociación Talleres<br>
+                    10:00 - Presentación grupal (15 talleres)<br>
+                    14:00 - Cámara de Comercio Automotriz
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🎯 Socios por Categoría</h3>
+                <div class="partner-card">
+                    <strong>Talleres Mecánicos</strong> <span class="status-badge status-scheduled">12/200</span><br>
+                    Comisión: 8% | El Güero, Los Compadres, Mecánica Integral
+                </div>
+                <div class="partner-card">
+                    <strong>Grúas y Arrastre</strong> <span class="status-badge status-scheduled">8/100</span><br>
+                    Comisión: 12% | Rápidas 24/7, El Rescate, Auxilio Total
+                </div>
+                <div class="partner-card">
+                    <strong>Refaccionarias</strong> <span class="status-badge status-scheduled">18/150</span><br>
+                    Comisión: 5% | La Central, Mundo Motor, Piezas y Más
+                </div>
+                <div class="partner-card">
+                    <strong>Servicios Especializados</strong> <span class="status-badge status-scheduled">9/50</span><br>
+                    Comisión: 10% | Eléctrico Chispa, Carrocerías del Norte
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🎪 Evento Principal - Hotel Marriott Polanco</h3>
+            <div style="background: var(--accent); color: #002b27; padding: 20px; border-radius: 12px; margin: 16px 0;">
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: center;">
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700;">3 Dic 2025</div>
+                        <div>Fecha del evento</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700;">50 Socios</div>
+                        <div>Invitados confirmados</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 24px; font-weight: 700;">$45K MXN</div>
+                        <div>Ingresos proyectados/mes</div>
+                    </div>
+                </div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 16px;">
+                <div style="text-align: center; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <strong>10:00</strong><br>Evento lanzamiento
+                </div>
+                <div style="text-align: center; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <strong>14:00</strong><br>Presentación socios
+                </div>
+                <div style="text-align: center; padding: 12px; background: var(--bg); border-radius: 8px;">
+                    <strong>18:00</strong><br>Networking y firmas
+                </div>
+            </div>
+        </div>
+
+        <div class="grid" style="margin-top: 32px;">
+            <div class="card">
+                <h3>📊 KPIs de Conversión</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 24px;">1,000</div>
+                        <div class="label">Contactos Target</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 24px;">200</div>
+                        <div class="label">Reuniones Meta</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 24px; color: var(--yellow);">25%</div>
+                        <div class="label">Tasa Conversión</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 24px; color: var(--coral);">15 días</div>
+                        <div class="label">Tiempo Cierre</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>💰 Proyección de Ingresos</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 20px;">$15K</div>
+                        <div class="label">Mes 1</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 20px;">$30K</div>
+                        <div class="label">Mes 2</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div class="metric" style="font-size: 20px; color: var(--accent);">$45K</div>
+                        <div class="label">Mes 3</div>
+                    </div>
+                </div>
+                <div style="margin-top: 16px; padding: 12px; background: var(--bg); border-radius: 8px; text-align: center;">
+                    <strong>Ticket Promedio: $1,200 MXN | 300 servicios/mes proyectados</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Gráfico distribución de socios
+        const partnersCtx = document.getElementById('partnersChart').getContext('2d');
+        new Chart(partnersCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Talleres', 'Grúas', 'Refaccionarias', 'Especializados'],
+                datasets: [{
+                    data: [200, 100, 150, 50],
+                    backgroundColor: ['#00bfa6', '#ff7043', '#f59e0b', '#8b5cf6'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { color: '#e0e1dd', padding: 15 }
+                    }
+                }
+            }
+        });
+
+        // Gráfico presupuesto merchandising
+        const budgetCtx = document.getElementById('budgetChart').getContext('2d');
+        new Chart(budgetCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Banners', 'Flyers', 'Stickers', 'Video', 'Manuales', 'Corporativo'],
+                datasets: [{
+                    data: [4500, 4000, 3000, 8000, 12500, 121000],
+                    backgroundColor: ['#00bfa6', '#ff7043', '#f59e0b', '#8b5cf6', '#415a77', '#00bfa6'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { 
+                        beginAtZero: true,
+                        ticks: { 
+                            color: '#e0e1dd',
+                            callback: function(value) { return '$' + (value/1000) + 'K'; }
+                        },
+                        grid: { color: '#415a77' }
+                    },
+                    x: { 
+                        ticks: { color: '#e0e1dd' },
+                        grid: { color: '#415a77' }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

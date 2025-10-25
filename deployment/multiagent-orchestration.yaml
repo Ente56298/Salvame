@@ -1,0 +1,54 @@
+agents:
+  diagnostic:
+    role: "Evaluar fallas vehiculares"
+    component: "FeaturePanel.tsx"
+    triggers: ["síntomas reportados", "diagnóstico solicitado"]
+    outputs: ["reporte de falla", "recomendaciones"]
+    
+  emergency:
+    role: "Gestionar alertas SOS"
+    component: "SOSModal.tsx"
+    triggers: ["botón SOS presionado", "emergencia detectada"]
+    outputs: ["ubicación enviada", "contactos notificados"]
+    
+  commercial:
+    role: "Gestionar perfil de negocio"
+    component: "BusinessManagementPanel.tsx"
+    triggers: ["socio registrado", "perfil actualizado"]
+    outputs: ["perfil activo", "catálogo disponible"]
+    
+  ai_assistant:
+    role: "Responder consultas 24/7"
+    component: "BusinessDetailModal.tsx"
+    triggers: ["consulta de cliente", "chat iniciado"]
+    outputs: ["respuesta personalizada", "seguimiento"]
+    
+  institutional:
+    role: "Analizar métricas por región"
+    component: "AnalyticsPanel.tsx"
+    triggers: ["reporte solicitado", "análisis programado"]
+    outputs: ["dashboard municipal", "estadísticas"]
+
+orchestration:
+  emergency_flow:
+    - agent: emergency
+      action: "capturar ubicación"
+    - agent: diagnostic
+      action: "evaluar contexto"
+    - agent: commercial
+      action: "encontrar servicios cercanos"
+      
+  business_flow:
+    - agent: commercial
+      action: "activar perfil"
+    - agent: ai_assistant
+      action: "configurar respuestas"
+    - agent: institutional
+      action: "registrar en métricas"
+
+metrics:
+  kpis:
+    - "tiempo respuesta SOS < 30 segundos"
+    - "precisión diagnóstico > 85%"
+    - "satisfacción socios > 4.5/5"
+    - "consultas IA respondidas 24/7"

@@ -1,0 +1,142 @@
+/* Professional Design System - Asistente Vial México */
+:root {
+  --bg: #0d1b2a;
+  --bg-2: #1b263b;
+  --text: #e0e1dd;
+  --accent: #00bfa6;
+  --steel: #415a77;
+  --coral: #ff7043;
+  --radius: 16px;
+  --shadow: 0 12px 32px rgba(0,0,0,.25);
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 48px;
+  --space-5: 64px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui;
+  margin: 0;
+  line-height: 1.6;
+}
+
+section {
+  display: none;
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: var(--space-5) var(--space-3);
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+section.active {
+  display: block;
+  animation: fadeUp .8s ease;
+}
+
+h1, h2 {
+  font-family: Montserrat, Inter;
+  margin: 0 0 var(--space-2);
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 42px;
+  line-height: 1.1;
+}
+
+h2 {
+  font-size: 28px;
+  color: var(--accent);
+}
+
+.title-underline {
+  width: 80px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: var(--space-1) 0 var(--space-4);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+}
+
+.card {
+  background: var(--bg-2);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-3);
+}
+
+.label {
+  color: #a8b3c7;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size: 12px;
+  margin-bottom: var(--space-1);
+  font-weight: 500;
+}
+
+.value {
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.note {
+  color: #a8b3c7;
+  font-size: 12px;
+  margin-top: var(--space-2);
+}
+
+.total {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  justify-content: center;
+}
+
+.pill {
+  background: var(--accent);
+  color: #002b27;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn {
+  background: var(--accent);
+  color: #002b27;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  transition: all 0.2s ease;
+}
+
+.btn:hover {
+  filter: brightness(.95);
+  transform: translateY(-1px);
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

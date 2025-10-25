@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asistencia Vial México - FUNCIONA</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const { useState } = React;
+        
+        const App = () => {
+            const [user, setUser] = useState(null);
+            const [showSOS, setShowSOS] = useState(false);
+            
+            if (!user) {
+                return (
+                    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center">
+                        <div className="text-center">
+                            <h1 className="text-4xl font-bold mb-4">🚨 Asistencia Vial México</h1>
+                            <p className="text-xl mb-8">Sistema funcionando</p>
+                            <button 
+                                onClick={() => setUser({name: 'Usuario Demo', plan: 'Premium'})}
+                                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg"
+                            >
+                                Entrar
+                            </button>
+                        </div>
+                    </div>
+                );
+            }
+            
+            return (
+                <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-gray-900 text-white">
+                    <div className="bg-gray-800/50 p-4 border-b border-gray-700">
+                        <div className="flex justify-between items-center max-w-6xl mx-auto">
+                            <div className="flex items-center gap-3">
+                                <span className="text-3xl">🚨</span>
+                                <div>
+                                    <h1 className="text-xl font-bold">Asistencia Vial México</h1>
+                                    <p className="text-sm text-gray-400">Bienvenido, {user.name}</p>
+                                </div>
+                            </div>
+                            <button 
+                                onClick={() => setUser(null)}
+                                className="text-gray-400 hover:text-white"
+                            >
+                                Salir
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div className="max-w-6xl mx-auto p-6">
+                        <div className="text-center mb-8">
+                            <h2 className="text-3xl font-bold mb-4">Panel de Control</h2>
+                            <p className="text-gray-400">Selecciona el servicio que necesitas</p>
+                        </div>
+                        
+                        <div className="grid grid-cols-3 gap-4 max-w-lg mx-auto">
+                            <button className="bg-gray-800/50 border border-gray-700 hover:bg-gray-700/70 p-4 rounded-2xl">
+                                <div className="text-3xl mb-2">🔍</div>
+                                <span className="text-sm font-bold">Evaluador</span>
+                            </button>
+                            <button className="bg-gray-800/50 border border-gray-700 hover:bg-gray-700/70 p-4 rounded-2xl">
+                                <div className="text-3xl mb-2">🔧</div>
+                                <span className="text-sm font-bold">Refacciones</span>
+                            </button>
+                            <button className="bg-gray-800/50 border border-gray-700 hover:bg-gray-700/70 p-4 rounded-2xl">
+                                <div className="text-3xl mb-2">🚦</div>
+                                <span className="text-sm font-bold">Tráfico</span>
+                            </button>
+                            <button className="bg-gray-800/50 border border-gray-700 hover:bg-gray-700/70 p-4 rounded-2xl">
+                                <div className="text-3xl mb-2">⛽</div>
+                                <span className="text-sm font-bold">Servicios</span>
+                            </button>
+                            <button className="bg-gray-800/50 border border-gray-700 hover:bg-gray-700/70 p-4 rounded-2xl">
+                                <div className="text-3xl mb-2">🛠️</div>
+                                <span className="text-sm font-bold">Asistencia</span>
+                            </button>
+                            <button 
+                                onClick={() => setShowSOS(true)}
+                                className="bg-red-600/80 border border-red-400 hover:bg-red-500/90 p-4 rounded-2xl animate-pulse"
+                            >
+                                <div className="text-3xl mb-2">🚨</div>
+                                <span className="text-sm font-bold">SOS</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    {showSOS && (
+                        <div className="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4">
+                            <div className="bg-gray-900/90 border border-red-500/50 rounded-2xl p-8 text-center max-w-lg">
+                                <h2 className="text-2xl font-bold mb-4 text-green-400">✅ SOS Activado</h2>
+                                <p className="text-gray-200 mb-6">🚨 Alerta enviada a servicios de emergencia<br/>📍 Ubicación GPS registrada<br/>🚗 Grúa más cercana: 8 minutos</p>
+                                <button
+                                    onClick={() => setShowSOS(false)}
+                                    className="bg-amber-500 text-gray-900 font-bold py-3 px-8 rounded-lg hover:bg-amber-400"
+                                >
+                                    Entendido
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        };
+        
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>

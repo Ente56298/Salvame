@@ -1,0 +1,50 @@
+{
+  "revenueStreams": {
+    "freemium": {
+      "userType": "conductor",
+      "features": ["SOS", "mapa básico", "diagnóstico simple"],
+      "price": 0,
+      "limitations": ["3 consultas/mes", "sin historial"]
+    },
+    "premium": {
+      "userType": "conductor",
+      "features": ["SOS", "mapas offline", "diagnóstico avanzado", "historial ilimitado"],
+      "price": 99,
+      "currency": "MXN",
+      "period": "monthly"
+    },
+    "business": {
+      "userType": "socio comercial",
+      "features": ["perfil comercial", "IA personalizada", "panel de gestión", "analíticas"],
+      "price": 299,
+      "currency": "MXN", 
+      "period": "monthly"
+    },
+    "enterprise": {
+      "userType": "institución",
+      "features": ["panel municipal", "API completa", "reportes personalizados", "soporte dedicado"],
+      "price": "custom",
+      "contact": "enterprise@asistentevial.mx"
+    }
+  },
+  "projections": {
+    "month1": {
+      "users": 1000,
+      "premium": 50,
+      "business": 10,
+      "revenue": 7950
+    },
+    "month6": {
+      "users": 10000,
+      "premium": 500,
+      "business": 100,
+      "revenue": 79500
+    },
+    "month12": {
+      "users": 50000,
+      "premium": 2500,
+      "business": 500,
+      "revenue": 397500
+    }
+  }
+}

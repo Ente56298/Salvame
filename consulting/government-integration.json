@@ -1,0 +1,186 @@
+{
+  "government_platforms": {
+    "estado_mexico": {
+      "name": "Portal Contribuyente EdoMex",
+      "url": "https://sfpya.edomexico.gob.mx/recaudacion/",
+      "services": [
+        "Pago impuestos estatales",
+        "Reimpresión comprobantes",
+        "Consulta CURP",
+        "Normatividad fiscal"
+      ],
+      "integration_potential": "high",
+      "api_available": true,
+      "automation_level": "80%"
+    },
+    "cdmx": {
+      "name": "Portal Trámites CDMX", 
+      "url": "https://tramites.cdmx.gob.mx",
+      "services": [
+        "Licencias funcionamiento",
+        "Permisos construcción",
+        "Pagos derechos",
+        "Consulta predial"
+      ],
+      "integration_potential": "high",
+      "api_available": true,
+      "automation_level": "95%"
+    },
+    "sat_federal": {
+      "name": "Portal SAT",
+      "url": "https://sat.gob.mx",
+      "services": [
+        "RFC y FIEL",
+        "Facturación CFDI",
+        "Declaraciones",
+        "Buzón tributario"
+      ],
+      "integration_potential": "medium",
+      "api_available": "limited",
+      "automation_level": "60%"
+    }
+  },
+  
+  "consulting_services": {
+    "fiscal_legal": {
+      "services": [
+        "Constitución empresas",
+        "Registro SAT",
+        "Trámites IMSS",
+        "Licencias municipales",
+        "Permisos SCT",
+        "Compliance fiscal"
+      ],
+      "pricing": {
+        "basic": 2500,
+        "premium": 5000,
+        "enterprise": 15000
+      },
+      "automation_level": "70%"
+    },
+    
+    "digital_management": {
+      "services": [
+        "Portal único trámites",
+        "Integración APIs",
+        "Pagos en línea",
+        "Seguimiento automático",
+        "Alertas proactivas"
+      ],
+      "technology_stack": [
+        "React/Node.js",
+        "API Gateway",
+        "Database PostgreSQL",
+        "Cloud AWS/Azure"
+      ]
+    },
+    
+    "tech_consulting": {
+      "services": [
+        "Digitalización procesos",
+        "Sistemas POS",
+        "Integración plataforma",
+        "Capacitación digital",
+        "Soporte 24/7"
+      ],
+      "target_clients": [
+        "Talleres mecánicos",
+        "Grúas y arrastre", 
+        "Refaccionarias",
+        "Servicios especializados"
+      ]
+    }
+  },
+  
+  "financial_projections": {
+    "year_1_2026": {
+      "clients": 200,
+      "avg_monthly_fee": 4000,
+      "annual_revenue": 9600000,
+      "gross_margin": 0.65,
+      "investment_required": 2000000
+    },
+    "year_2_2027": {
+      "clients": 500,
+      "avg_monthly_fee": 5500,
+      "annual_revenue": 33000000,
+      "gross_margin": 0.70,
+      "investment_required": 5000000
+    },
+    "year_3_2028": {
+      "clients": 1000,
+      "avg_monthly_fee": 7000,
+      "annual_revenue": 84000000,
+      "gross_margin": 0.75,
+      "investment_required": 8000000
+    }
+  },
+  
+  "implementation_phases": {
+    "phase_1_pilot": {
+      "timeline": "Q1 2026",
+      "clients": 50,
+      "services": "basic",
+      "investment": 2000000,
+      "team_size": 8
+    },
+    "phase_2_scale": {
+      "timeline": "Q2-Q4 2026", 
+      "clients": 200,
+      "services": "premium",
+      "investment": 5000000,
+      "team_size": 15
+    },
+    "phase_3_expansion": {
+      "timeline": "2027",
+      "clients": 500,
+      "services": "enterprise",
+      "investment": 8000000,
+      "team_size": 25
+    }
+  },
+  
+  "competitive_advantages": [
+    "Total integration with Asistente Vial platform",
+    "Automotive sector specialization",
+    "Advanced AI automation",
+    "Progressive national coverage",
+    "Hybrid digital + human model"
+  ],
+  
+  "success_metrics": {
+    "operational": {
+      "avg_process_time": "< 5 days",
+      "client_satisfaction": "> 4.5/5",
+      "automation_rate": "> 80%",
+      "platform_uptime": "> 99.9%"
+    },
+    "financial": {
+      "monthly_growth": "> 15%",
+      "client_retention": "> 90%",
+      "gross_margin": "> 70%",
+      "cac_payback": "< 6 months"
+    }
+  },
+  
+  "future_vision_2030": {
+    "latam_expansion": {
+      "mexico": "5000 clients",
+      "colombia": "Q1 2029",
+      "chile": "Q3 2029", 
+      "argentina": "Q1 2030"
+    },
+    "new_services": [
+      "ESG consulting",
+      "Complete digital transformation",
+      "Predictive business intelligence",
+      "Professional services marketplace"
+    ],
+    "advanced_technology": [
+      "Generative AI for documents",
+      "Blockchain for traceability",
+      "RPA for total automation",
+      "Predictive analytics for compliance"
+    ]
+  }
+}

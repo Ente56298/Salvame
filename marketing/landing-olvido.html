@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- Arquitecto: DIOS | Implementador: Jorge Hernández -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sálvame</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+            animation: fadeIn 2s ease-in;
+        }
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        .tagline {
+            font-size: 20px;
+            color: #a8b3c7;
+            margin-bottom: 48px;
+            line-height: 1.6;
+        }
+        .cta {
+            background: #00bfa6;
+            color: #000;
+            border: none;
+            padding: 16px 48px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta:hover {
+            background: #00d4b8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 191, 166, 0.3);
+        }
+        .stats {
+            margin-top: 64px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+        .stat {
+            padding: 16px;
+        }
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: #00bfa6;
+            margin-bottom: 8px;
+        }
+        .stat-label {
+            font-size: 14px;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .tagline { font-size: 18px; }
+            .stats { grid-template-columns: 1fr; gap: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sálvame</h1>
+        <p class="tagline">
+            Porque cada segundo cuenta.<br>
+            Asistencia vial inteligente con IA.<br>
+            Respuesta en menos de 2 minutos.
+        </p>
+        <a href="#registro" class="cta" onclick="registrar()">Quiero estar protegido</a>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">&lt;2min</div>
+                <div class="stat-label">Tiempo respuesta</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Disponibilidad</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">85%</div>
+                <div class="stat-label">Cobertura nacional</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function registrar() {
+            // Capturar lead
+            const timestamp = new Date().toISOString();
+            const data = {
+                source: 'carretera-olvido',
+                timestamp: timestamp,
+                userAgent: navigator.userAgent
+            };
+            
+            // Enviar a backend (implementar)
+            console.log('Lead capturado:', data);
+            
+            // Redirigir a formulario o app
+            setTimeout(() => {
+                window.location.href = 'https://salvame.mx/registro';
+            }, 500);
+        }
+
+        // Analytics
+        if (document.referrer.includes('tiktok') || 
+            document.referrer.includes('instagram') || 
+            document.referrer.includes('youtube')) {
+            console.log('Tráfico desde:', document.referrer);
+        }
+    </script>
+</body>
+</html>

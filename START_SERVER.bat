@@ -1,0 +1,6 @@
+@echo off
+echo 🚀 Iniciando Asistencia Vial...
+cd /d A:\asistencia_vial
+echo ✅ Usando npx para ejecutar Vite...
+npx vite
+pause

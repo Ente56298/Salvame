@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>🚗 Asistente Vial México</title>
+    <meta name="description" content="Tu copiloto inteligente en las carreteras de México">
+    
+    <!-- Estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#64748b'
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- PWA Meta Tags -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Asistente Vial México">
+    <meta name="apple-mobile-web-app-title" content="AVMX">
+    <meta name="theme-color" content="#2563eb">
+    
+    <!-- Favicon local -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚗</text></svg>">
+</head>
+<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
+    <div id="app">
+        <!-- Loading inicial -->
+        <div class="min-h-screen flex items-center justify-center">
+            <div class="text-center">
+                <div class="text-6xl mb-4">🚗</div>
+                <h1 class="text-2xl font-bold mb-2">Asistente Vial México</h1>
+                <p class="text-gray-600 dark:text-gray-400">Cargando aplicación...</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Script de la aplicación -->
+    <script src="index.js"></script>
+</body>
+</html>

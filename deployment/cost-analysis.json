@@ -1,0 +1,61 @@
+{
+  "total_investment": 2250000,
+  "timeline_weeks": 52,
+  "roi_projected": 1180,
+  "breakeven_month": 8,
+  "phases": {
+    "phase_1": {
+      "name": "Preparación",
+      "weeks": "1-4",
+      "total_cost": 234000,
+      "percentage": 10.4,
+      "breakdown": {
+        "development_testing": 144000,
+        "infrastructure_setup": 54000,
+        "tools_licenses": 36000
+      }
+    },
+    "phase_2": {
+      "name": "Google Play",
+      "weeks": "5-8", 
+      "total_cost": 117000,
+      "percentage": 5.2,
+      "breakdown": {
+        "developer_account_assets": 27000,
+        "initial_marketing": 90000
+      }
+    },
+    "phase_3_5": {
+      "name": "Escalamiento",
+      "weeks": "9-52",
+      "total_cost": 1899000,
+      "percentage": 84.4,
+      "breakdown": {
+        "infrastructure_monthly": 475200,
+        "marketing_acquisition": 630000,
+        "support_operations": 396000,
+        "continuous_development": 397800
+      }
+    }
+  },
+  "monthly_costs": {
+    "infrastructure": 10800,
+    "gemini_api": 14400,
+    "development": 18000,
+    "marketing": 36000,
+    "operations": 9000,
+    "total": 88200
+  },
+  "revenue_projections": {
+    "month_6": 270000,
+    "month_12": 810000,
+    "month_24": 2250000,
+    "month_36": 4500000
+  },
+  "key_metrics": {
+    "cost_per_user_acquisition": 225,
+    "monthly_burn_rate": 88200,
+    "runway_months": 25.5,
+    "target_users_breakeven": 2000
+  }
+}

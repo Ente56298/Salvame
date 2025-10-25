@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistencia Vial México</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #1f2937 0%, #111827 50%, #0f172a 100%); }
+        .glass { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+        .pulse-ring { animation: pulse-ring 2s infinite; }
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="gradient-bg text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <div class="relative w-20 h-20 mx-auto mb-4">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full flex items-center justify-center text-3xl">
+                    🚨
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500 to-orange-600 rounded-full pulse-ring"></div>
+            </div>
+            <h1 class="text-4xl font-bold mb-4 bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent">
+                Asistencia Vial México
+            </h1>
+            <p class="text-xl text-gray-300">SOS y asistencia vial en tiempo real</p>
+        </div>
+
+        <!-- GPS Status -->
+        <div class="max-w-md mx-auto mb-8">
+            <div id="gpsStatus" class="p-4 glass rounded-lg border border-yellow-700">
+                <div class="flex items-center justify-center space-x-2 text-yellow-400">
+                    <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <span class="text-sm font-medium">Obteniendo ubicación...</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Buttons -->
+        <div class="max-w-md mx-auto space-y-4">
+            <button id="sosBtn" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-6 px-6 rounded-xl text-xl shadow-2xl transform hover:scale-105 transition-all duration-200 border border-red-500">
+                🚨 SOS EMERGENCIA
+            </button>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <button class="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-bold py-4 px-4 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-200 border border-blue-500">
+                    🔧 Talleres
+                </button>
+                <button id="mapBtn" class="bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white font-bold py-4 px-4 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-200 border border-green-500">
+                    🗺️ Mapa
+                </button>
+            </div>
+            
+            <div class="grid grid-cols-2 gap-4">
+                <button class="bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 px-4 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-200 border border-purple-500">
+                    ⛽ Gasolineras
+                </button>
+                <button class="bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-700 hover:to-indigo-800 text-white font-bold py-4 px-4 rounded-lg shadow-xl transform hover:scale-105 transition-all duration-200 border border-indigo-500">
+                    🏥 Hospitales
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-12 text-gray-500 text-sm">
+            <p>© 2024 Asistencia Vial México. Todos los derechos reservados.</p>
+            <p class="mt-2">Versión 1.0.0 - Lanzamiento Octubre 2025</p>
+        </div>
+    </div>
+
+    <!-- SOS Modal -->
+    <div id="sosModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4 hidden">
+        <div class="glass bg-gray-800/90 p-6 rounded-xl max-w-sm w-full border border-gray-700">
+            <div class="text-center">
+                <div class="w-16 h-16 mx-auto mb-4 bg-red-600 rounded-full flex items-center justify-center text-2xl animate-pulse">
+                    🚨
+                </div>
+                <h3 class="text-xl font-bold mb-2 text-red-400">SOS Enviado</h3>
+                <p class="text-gray-300 mb-4">Tu ubicación ha sido enviada a los servicios de emergencia</p>
+                <div id="locationInfo" class="text-xs text-gray-400 mb-4"></div>
+                <button id="closeSOS" class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg transition-colors">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Modal -->
+    <div id="mapModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-50 p-4 hidden">
+        <div class="w-full h-full max-w-4xl max-h-[90vh] bg-gray-800 rounded-xl overflow-hidden">
+            <div class="p-4 border-b border-gray-700 flex justify-between items-center">
+                <h3 class="text-lg font-bold">Mapa de Ubicación</h3>
+                <button id="closeMap" class="text-gray-400 hover:text-white">✕</button>
+            </div>
+            <div id="mapContainer" class="w-full h-96 bg-gray-700 flex items-center justify-center">
+                <p class="text-gray-400">Cargando mapa...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let userLocation = null;
+
+        // Get GPS location
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        userLocation = {
+                            lat: position.coords.latitude,
+                            lon: position.coords.longitude
+                        };
+                        updateGPSStatus(true);
+                        loadMap();
+                    },
+                    (error) => {
+                        updateGPSStatus(false, error.message);
+                    },
+                    { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+                );
+            } else {
+                updateGPSStatus(false, "Geolocalización no soportada");
+            }
+        }
+
+        function updateGPSStatus(success, error = null) {
+            const statusEl = document.getElementById('gpsStatus');
+            if (success) {
+                statusEl.innerHTML = `
+                    <div class="flex items-center justify-center space-x-2 text-green-400">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-sm font-medium">GPS Conectado</span>
+                    </div>
+                    <p class="text-xs text-center mt-2 text-gray-300">
+                        Lat: ${userLocation.lat.toFixed(6)}, Lon: ${userLocation.lon.toFixed(6)}
+                    </p>
+                `;
+                statusEl.className = 'p-4 glass rounded-lg border border-green-700';
+            } else {
+                statusEl.innerHTML = `
+                    <div class="flex items-center justify-center space-x-2 text-red-400">
+                        <span class="text-sm">${error || 'Error de GPS'}</span>
+                    </div>
+                `;
+                statusEl.className = 'p-4 glass rounded-lg border border-red-700';
+            }
+        }
+
+        function sendSOS() {
+            if (!userLocation) {
+                alert('No se puede enviar SOS sin ubicación GPS');
+                return;
+            }
+
+            const message = `🚨 EMERGENCIA VIAL
+Ubicación: ${userLocation.lat}, ${userLocation.lon}
+Google Maps: https://maps.google.com/?q=${userLocation.lat},${userLocation.lon}
+Hora: ${new Date().toLocaleString()}`;
+
+            // Show modal
+            document.getElementById('locationInfo').textContent = 
+                `Lat: ${userLocation.lat.toFixed(6)}, Lon: ${userLocation.lon.toFixed(6)}`;
+            document.getElementById('sosModal').classList.remove('hidden');
+
+            // Log for development
+            console.log('SOS enviado:', message);
+            
+            // Here would go the actual API call
+            // fetch('/api/sos', { method: 'POST', body: JSON.stringify({...}) })
+        }
+
+        function loadMap() {
+            if (!userLocation) return;
+            
+            const mapContainer = document.getElementById('mapContainer');
+            mapContainer.innerHTML = `
+                <iframe 
+                    width="100%" 
+                    height="100%" 
+                    frameborder="0" 
+                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dOWTgHz-TrU_T4&q=${userLocation.lat},${userLocation.lon}&zoom=15"
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+
+        // Event listeners
+        document.getElementById('sosBtn').addEventListener('click', sendSOS);
+        document.getElementById('mapBtn').addEventListener('click', () => {
+            document.getElementById('mapModal').classList.remove('hidden');
+        });
+        document.getElementById('closeSOS').addEventListener('click', () => {
+            document.getElementById('sosModal').classList.add('hidden');
+        });
+        document.getElementById('closeMap').addEventListener('click', () => {
+            document.getElementById('mapModal').classList.add('hidden');
+        });
+
+        // Initialize
+        getLocation();
+    </script>
+</body>
+</html>

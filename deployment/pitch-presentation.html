@@ -1,0 +1,453 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asistente Vial México</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design/professional-design-system.css">
+    <style>
+        .chart-container { width: 400px; height: 300px; margin: 0 auto; }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <div id="presentation" class="relative">
+        
+        <div class="slide hidden flex items-center justify-center relative" style="background: linear-gradient(135deg, #ffffff, #1e40af)">
+            <div class="absolute inset-0 opacity-20">
+                <img src="media/hero-background.svg" alt="Hero" class="w-full h-full object-cover"/>
+            </div>
+            <div class="relative z-10 text-center">
+                <h1 class="text-6xl font-bold mb-4">Asistente Vial México</h1>
+                <p class="text-2xl opacity-80">Seguridad, asistencia y conectividad en carretera, impulsado por IA</p>
+                <div class="mt-8 text-6xl">🚗 🛡️ 🤖</div>
+            </div>
+        </div>
+
+        <div class="slide hidden p-16" style="background-color: #fef2f2; color: #dc2626">
+            <h2 class="text-5xl font-bold mb-12 text-center">El Problema</h2>
+            <div class="grid grid-cols-2 gap-12 items-center">
+                <div class="flex justify-center">
+                    <img src="media/problem-visual.svg" alt="Problem" class="max-w-full h-auto rounded-lg shadow-lg"/>
+                </div>
+                <div class="space-y-8 text-2xl">
+                    
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 bg-red-500 rounded-full"></div>
+                            <span>40% conductores sin asistencia inmediata</span>
+                        </div>
+                    
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 bg-red-500 rounded-full"></div>
+                            <span>Carreteras con baja cobertura de servicios</span>
+                        </div>
+                    
+                        <div class="flex items-center gap-4">
+                            <div class="w-6 h-6 bg-red-500 rounded-full"></div>
+                            <span>Falta integración usuarios-negocios-autoridades</span>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="slide hidden p-16" style="background-color: #f0fdf4; color: #059669">
+            <h2 class="text-5xl font-bold mb-12">Nuestra Solución</h2>
+            <div class="grid grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    
+                        <div class="flex items-center gap-4 text-xl">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span>Seguimiento GPS en tiempo real</span>
+                        </div>
+                    
+                        <div class="flex items-center gap-4 text-xl">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span>Botón SOS con geolocalización</span>
+                        </div>
+                    
+                        <div class="flex items-center gap-4 text-xl">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span>IA Gemini para diagnóstico 24/7</span>
+                        </div>
+                    
+                        <div class="flex items-center gap-4 text-xl">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span>Red de servicios conectados</span>
+                        </div>
+                    
+                        <div class="flex items-center gap-4 text-xl">
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span>Panel institucional</span>
+                        </div>
+                    
+                </div>
+                <div class="flex items-center justify-center">
+                    <img src="media/app-mockup.svg" alt="App Mockup" class="max-w-sm h-auto rounded-3xl shadow-2xl"/>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide hidden p-16" style="background-color: #faf5ff; color: #7c3aed">
+            <h2 class="text-5xl font-bold mb-12">Propuesta de Valor</h2>
+            <div class="grid grid-cols-2 gap-8">
+                
+                    <div class="flex items-center gap-6 text-xl mb-8 p-6 bg-gray-800 rounded-lg">
+                        <img src="media/value-icon-1.svg" alt="Seguridad inmediata: SOS con geolocalización" class="w-16 h-16"/>
+                        <span>Seguridad inmediata: SOS con geolocalización</span>
+                    </div>
+                
+                    <div class="flex items-center gap-6 text-xl mb-8 p-6 bg-gray-800 rounded-lg">
+                        <img src="media/value-icon-2.svg" alt="IA 24/7: diagnóstico y consultas" class="w-16 h-16"/>
+                        <span>IA 24/7: diagnóstico y consultas</span>
+                    </div>
+                
+                    <div class="flex items-center gap-6 text-xl mb-8 p-6 bg-gray-800 rounded-lg">
+                        <img src="media/value-icon-3.svg" alt="Red de talleres conectados" class="w-16 h-16"/>
+                        <span>Red de talleres conectados</span>
+                    </div>
+                
+                    <div class="flex items-center gap-6 text-xl mb-8 p-6 bg-gray-800 rounded-lg">
+                        <img src="media/value-icon-4.svg" alt="Analítica institucional" class="w-16 h-16"/>
+                        <span>Analítica institucional</span>
+                    </div>
+                
+            </div>
+        </div>
+
+        <div class="slide hidden p-16" style="background-color: #f0f9ff; color: #0891b2">
+            <h2 class="text-5xl font-bold mb-12">Producto en Acción</h2>
+            <div class="grid grid-cols-2 gap-8">
+                
+                    <div class="bg-gray-800 rounded-lg p-4 text-center">
+                        <div class="w-full h-64 bg-gray-700 rounded flex items-center justify-center mb-4">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <span class="text-lg">mapa interactivo</span>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg p-4 text-center">
+                        <div class="w-full h-64 bg-gray-700 rounded flex items-center justify-center mb-4">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <span class="text-lg">boton sos</span>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg p-4 text-center">
+                        <div class="w-full h-64 bg-gray-700 rounded flex items-center justify-center mb-4">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <span class="text-lg">panel negocios</span>
+                    </div>
+                
+                    <div class="bg-gray-800 rounded-lg p-4 text-center">
+                        <div class="w-full h-64 bg-gray-700 rounded flex items-center justify-center mb-4">
+                            <span class="text-4xl">📱</span>
+                        </div>
+                        <span class="text-lg">historial</span>
+                    </div>
+                
+            </div>
+        </div>
+
+        <section class="slide hidden">
+            <h1>Mercado Objetivo</h1>
+            <div class="title-underline"></div>
+            
+            <div class="grid-3">
+                
+                    <div class="card">
+                        <div class="label">Usuarios finales</div>
+                        <div class="value">15M conductores</div>
+                        <div class="note">Mercado total disponible</div>
+                        <div class="value" style="margin-top:12px; color:var(--accent)">$45M</div>
+                        <div class="note">Potencial de ingresos</div>
+                    </div>
+                
+                    <div class="card">
+                        <div class="label">Socios comerciales</div>
+                        <div class="value">50K talleres</div>
+                        <div class="note">Mercado total disponible</div>
+                        <div class="value" style="margin-top:12px; color:var(--accent)">$30M</div>
+                        <div class="note">Potencial de ingresos</div>
+                    </div>
+                
+                    <div class="card">
+                        <div class="label">Instituciones</div>
+                        <div class="value">2.5K municipios</div>
+                        <div class="note">Mercado total disponible</div>
+                        <div class="value" style="margin-top:12px; color:var(--accent)">$25M</div>
+                        <div class="note">Potencial de ingresos</div>
+                    </div>
+                
+            </div>
+            
+            <div class="total">
+                <span class="pill">Total mercado potencial</span>
+                <h2 style="margin:0">$100M</h2>
+            </div>
+            
+            <div class="note" style="text-align:center; margin-top:24px">
+                Cifras basadas en análisis de mercado y proyecciones conservadoras
+            </div>
+        </section>
+
+        <div class="slide hidden p-16" style="background-color: #f0fdf4; color: #16a34a">
+            <h2 class="text-5xl font-bold mb-12">Modelo de Negocio</h2>
+            <div class="grid grid-cols-2 gap-12">
+                <div class="chart-container">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="space-y-4">
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-xl font-bold">Freemium</div>
+                            <div class="text-2xl text-green-400">$0</div>
+                            <div class="text-sm text-gray-300">Básico</div>
+                        </div>
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-xl font-bold">Premium</div>
+                            <div class="text-2xl text-green-400">$5/mes</div>
+                            <div class="text-sm text-gray-300">Completo</div>
+                        </div>
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-xl font-bold">Socios</div>
+                            <div class="text-2xl text-green-400">$35/mes</div>
+                            <div class="text-sm text-gray-300">Panel IA</div>
+                        </div>
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-xl font-bold">Enterprise</div>
+                            <div class="text-2xl text-green-400">$2K/mes</div>
+                            <div class="text-sm text-gray-300">Institucional</div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="slide hidden p-16" style="background-color: #faf5ff; color: #9333ea">
+            <h2 class="text-5xl font-bold mb-12">Análisis Financiero</h2>
+            <div class="grid grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">Costos vs Ingresos</h3>
+                    <div class="chart-container">
+                        <canvas id="financialChart"></canvas>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-bold mb-6">Métricas Clave</h3>
+                    <div class="space-y-4">
+                        <div class="text-2xl">Ingresos: <span class="text-green-400">$125K/mes año 1</span></div>
+                        <div class="text-2xl">ROI: <span class="text-green-400">1180%</span></div>
+                        <div class="text-xl">Breakeven: <span class="text-blue-400">Mes 6</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slide hidden p-16" style="background-color: #f0fdfa; color: #0d9488">
+            <h2 class="text-5xl font-bold mb-12">Proyecciones</h2>
+            <div class="grid grid-cols-2 gap-12">
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+                <div class="space-y-6">
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold">Año 1</div>
+                            <div class="text-lg">50K usuarios</div>
+                            <div class="text-lg">500 socios</div>
+                            <div class="text-xl text-green-400">$1.5M</div>
+                        </div>
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold">Año 2</div>
+                            <div class="text-lg">200K usuarios</div>
+                            <div class="text-lg">2K socios</div>
+                            <div class="text-xl text-green-400">$6M</div>
+                        </div>
+                    
+                        <div class="p-4 bg-gray-800 rounded-lg">
+                            <div class="text-2xl font-bold">Año 3</div>
+                            <div class="text-lg">500K usuarios</div>
+                            <div class="text-lg">5K socios</div>
+                            <div class="text-xl text-green-400">$15M</div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <section class="slide hidden" style="display:flex; align-items:center; justify-content:center; text-align:center">
+            <div>
+                <h1>Inversión Requerida</h1>
+                <div class="title-underline" style="margin:0 auto"></div>
+                
+                <div style="font-size:72px; font-weight:700; color:var(--accent); margin:32px 0">
+                    $100K USD
+                </div>
+                
+                <div style="font-size:20px; margin:24px 0; color:#a8b3c7">
+                    Infraestructura • Marketing • Expansión
+                </div>
+                
+                <div class="cta-section" style="margin-top:48px">
+                    <p style="font-size:18px; margin-bottom:24px">
+                        Únete al viaje para transformar la seguridad vial en México
+                    </p>
+                    <button class="btn" style="font-size:18px; padding:16px 32px">
+                        Contactar Ahora
+                    </button>
+                    <div style="margin-top:16px; font-size:14px; color:#a8b3c7">
+                        asistentevial@startup.mx
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <div class="fixed bottom-4 right-4 flex gap-2">
+        <button onclick="prevSlide()" class="bg-blue-600 px-4 py-2 rounded">←</button>
+        <span id="slideCounter" class="bg-gray-700 px-4 py-2 rounded">1/10</span>
+        <button onclick="nextSlide()" class="bg-blue-600 px-4 py-2 rounded">→</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        
+        function showSlide(n) {
+            slides.forEach(s => s.classList.add('hidden'));
+            slides[n].classList.remove('hidden');
+            document.getElementById('slideCounter').textContent = `${n+1}/15015`;
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+        
+        // Initialize charts
+        function initCharts() {
+            // Financial Chart
+            const financialCtx = document.getElementById('financialChart');
+            if (financialCtx) {
+                new Chart(financialCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Costos', 'Ingresos'],
+                        datasets: [{
+                            data: [21500, 125000],
+                            backgroundColor: ['#ef4444', '#10b981'],
+                            borderRadius: 8
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            y: { 
+                                beginAtZero: true,
+                                ticks: { color: '#ffffff' },
+                                grid: { color: '#374151' }
+                            },
+                            x: { 
+                                ticks: { color: '#ffffff' },
+                                grid: { color: '#374151' }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Revenue Distribution Chart
+            const revenueCtx = document.getElementById('revenueChart');
+            if (revenueCtx) {
+                new Chart(revenueCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Premium', 'Socios', 'Enterprise', 'Publicidad'],
+                        datasets: [{
+                            data: [35, 40, 20, 5],
+                            backgroundColor: ['#3b82f6', '#10b981', '#f59e0b', '#ef4444'],
+                            borderWidth: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: { color: '#ffffff', padding: 20 }
+                            }
+                        }
+                    }
+                });
+            }
+            
+            // Growth Chart
+            const growthCtx = document.getElementById('growthChart');
+            if (growthCtx) {
+                new Chart(growthCtx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Año 1', 'Año 2', 'Año 3'],
+                        datasets: [{
+                            label: 'Usuarios (K)',
+                            data: [50, 200, 500],
+                            borderColor: '#3b82f6',
+                            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }, {
+                            label: 'Ingresos ($M)',
+                            data: [1.5, 6, 15],
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: { 
+                            legend: { 
+                                labels: { color: '#ffffff' }
+                            }
+                        },
+                        scales: {
+                            y: { 
+                                beginAtZero: true,
+                                ticks: { color: '#ffffff' },
+                                grid: { color: '#374151' }
+                            },
+                            x: { 
+                                ticks: { color: '#ffffff' },
+                                grid: { color: '#374151' }
+                            }
+                        }
+                    }
+                });
+            }
+        }
+        
+        showSlide(0);
+        setTimeout(initCharts, 500);
+    </script>
+</body>
+</html>

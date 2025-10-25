@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Proyecciones Avanzadas</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1b2a; --bg-2: #1b263b; --text: #e0e1dd;
+            --accent: #00bfa6; --coral: #ff7043; --yellow: #f59e0b; --purple: #8b5cf6; --blue: #3b82f6;
+            --radius: 12px; --shadow: 0 8px 24px rgba(0,0,0,.2);
+        }
+        body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 1600px; margin: 0 auto; }
+        h1 { font-family: Montserrat; color: var(--accent); margin-bottom: 32px; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 24px; margin-bottom: 32px; }
+        .card { background: var(--bg-2); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+        .metric { font-size: 28px; font-weight: 600; color: var(--accent); margin: 8px 0; }
+        .label { color: #a8b3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .chart-container { height: 350px; margin: 16px 0; }
+        .scenario-selector { display: flex; gap: 8px; margin-bottom: 16px; }
+        .scenario-btn { padding: 8px 16px; border: none; border-radius: 6px; cursor: pointer; font-weight: 500; }
+        .scenario-btn.active { background: var(--accent); color: #002b27; }
+        .scenario-btn:not(.active) { background: var(--bg); color: var(--text); }
+        .projection-card { border-left: 4px solid var(--blue); padding: 16px; margin: 8px 0; background: var(--bg); border-radius: 8px; }
+        .growth-indicator { display: inline-flex; align-items: center; gap: 4px; font-size: 12px; color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📈 Dashboard - Proyecciones Avanzadas</h1>
+        <div style="background: var(--blue); color: white; padding: 16px; border-radius: 8px; margin-bottom: 32px; text-align: center;">
+            <strong>Modelo Predictivo Basado en Datos INEGI | Horizonte: 36 Meses</strong>
+        </div>
+
+        <div class="scenario-selector">
+            <button class="scenario-btn" onclick="setScenario('conservative')">Conservador</button>
+            <button class="scenario-btn active" onclick="setScenario('realistic')">Realista</button>
+            <button class="scenario-btn" onclick="setScenario('optimistic')">Optimista</button>
+            <button class="scenario-btn" onclick="setScenario('aggressive')">Agresivo</button>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <div class="label">Usuarios Proyectados (36 meses)</div>
+                <div class="metric" id="usersMetric">375,000</div>
+                <div class="growth-indicator">↗ +2,500% vs inicial</div>
+                <div style="color: #a8b3c7; font-size: 12px; margin-top: 8px;">
+                    Penetración 2.5% del mercado ZMVM
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="label">Ingresos Anuales (Año 3)</div>
+                <div class="metric" id="revenueMetric">$180M MXN</div>
+                <div class="growth-indicator">↗ +1,200% vs año 1</div>
+                <div style="color: #a8b3c7; font-size: 12px; margin-top: 8px;">
+                    ARPU promedio: $480 MXN/año
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="label">Socios Comerciales</div>
+                <div class="metric" id="partnersMetric">2,000</div>
+                <div class="growth-indicator">↗ +300% vs año 1</div>
+                <div style="color: #a8b3c7; font-size: 12px; margin-top: 8px;">
+                    Cobertura: 85% ZMVM
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="label">Valoración Empresa</div>
+                <div class="metric" id="valuationMetric">$1.2B MXN</div>
+                <div class="growth-indicator">↗ Múltiplo 6.7x ingresos</div>
+                <div style="color: #a8b3c7; font-size: 12px; margin-top: 8px;">
+                    Comparable a unicornios LATAM
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Crecimiento de Usuarios (36 Meses)</h3>
+                <div class="chart-container">
+                    <canvas id="userGrowthChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Proyección de Ingresos por Canal</h3>
+                <div class="chart-container">
+                    <canvas id="revenueChannelsChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Expansión Geográfica</h3>
+                <div class="chart-container">
+                    <canvas id="geoExpansionChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Métricas de Retención y LTV</h3>
+                <div class="chart-container">
+                    <canvas id="retentionChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Hitos Críticos por Escenario</h3>
+            <div class="projection-card">
+                <strong>Q4 2025</strong> - Lanzamiento ZMVM<br>
+                <small>50K usuarios, 200 socios, $15M MXN ingresos anuales</small>
+            </div>
+            <div class="projection-card">
+                <strong>Q2 2026</strong> - Expansión Nacional<br>
+                <small>150K usuarios, 800 socios, $60M MXN ingresos anuales</small>
+            </div>
+            <div class="projection-card">
+                <strong>Q4 2026</strong> - Consolidación Mercado<br>
+                <small>300K usuarios, 1.5K socios, $120M MXN ingresos anuales</small>
+            </div>
+            <div class="projection-card">
+                <strong>Q4 2027</strong> - Liderazgo Regional<br>
+                <small>500K usuarios, 2K socios, $180M MXN ingresos anuales</small>
+            </div>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <h3>📊 Análisis de Sensibilidad</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                    <div>
+                        <div class="label">Penetración de Mercado</div>
+                        <div style="font-size: 18px; margin: 8px 0;">
+                            <span style="color: var(--coral);">1%</span> → 
+                            <span style="color: var(--accent);">2.5%</span> → 
+                            <span style="color: var(--blue);">5%</span>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="label">ARPU Anual</div>
+                        <div style="font-size: 18px; margin: 8px 0;">
+                            <span style="color: var(--coral);">$360</span> → 
+                            <span style="color: var(--accent);">$480</span> → 
+                            <span style="color: var(--blue);">$720</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>🚀 Factores de Aceleración</h3>
+                <div style="padding: 12px; background: var(--bg); border-radius: 8px; margin-bottom: 8px;">
+                    <strong>Alianzas Estratégicas</strong><br>
+                    <small>Aseguradoras, gobiernos: +40% crecimiento</small>
+                </div>
+                <div style="padding: 12px; background: var(--bg); border-radius: 8px; margin-bottom: 8px;">
+                    <strong>Expansión Geográfica</strong><br>
+                    <small>Guadalajara, Monterrey: +60% TAM</small>
+                </div>
+                <div style="padding: 12px; background: var(--bg); border-radius: 8px; margin-bottom: 8px;">
+                    <strong>IA Avanzada</strong><br>
+                    <small>Mantenimiento predictivo: +35% retención</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentScenario = 'realistic';
+        const scenarios = {
+            conservative: { users: 250000, revenue: 120, partners: 1200, valuation: 800 },
+            realistic: { users: 375000, revenue: 180, partners: 2000, valuation: 1200 },
+            optimistic: { users: 500000, revenue: 300, partners: 3000, valuation: 2000 },
+            aggressive: { users: 750000, revenue: 540, partners: 4500, valuation: 3600 }
+        };
+
+        function setScenario(scenario) {
+            currentScenario = scenario;
+            document.querySelectorAll('.scenario-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            updateMetrics();
+        }
+
+        function updateMetrics() {
+            const data = scenarios[currentScenario];
+            document.getElementById('usersMetric').textContent = data.users.toLocaleString();
+            document.getElementById('revenueMetric').textContent = `$${data.revenue}M MXN`;
+            document.getElementById('partnersMetric').textContent = data.partners.toLocaleString();
+            document.getElementById('valuationMetric').textContent = `$${data.valuation}M MXN`;
+        }
+
+        // Initialize charts
+        const userCtx = document.getElementById('userGrowthChart').getContext('2d');
+        new Chart(userCtx, {
+            type: 'line',
+            data: {
+                labels: ['Oct 2025', 'Ene 2026', 'Abr 2026', 'Jul 2026', 'Oct 2026', 'Ene 2027', 'Abr 2027', 'Jul 2027', 'Oct 2027'],
+                datasets: [{
+                    label: 'Usuarios',
+                    data: [15000, 45000, 85000, 140000, 210000, 280000, 320000, 350000, 375000],
+                    borderColor: '#00bfa6',
+                    backgroundColor: 'rgba(0, 191, 166, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#e0e1dd' } } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } },
+                    x: { ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } }
+                }
+            }
+        });
+
+        const revenueCtx = document.getElementById('revenueChannelsChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Premium', 'Socios', 'Enterprise', 'Publicidad'],
+                datasets: [{
+                    data: [35, 40, 20, 5],
+                    backgroundColor: ['#3b82f6', '#00bfa6', '#f59e0b', '#ff7043'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom', labels: { color: '#e0e1dd' } } }
+            }
+        });
+
+        const geoCtx = document.getElementById('geoExpansionChart').getContext('2d');
+        new Chart(geoCtx, {
+            type: 'bar',
+            data: {
+                labels: ['ZMVM', 'Guadalajara', 'Monterrey', 'Puebla', 'Tijuana'],
+                datasets: [{
+                    label: 'Usuarios (Miles)',
+                    data: [250, 50, 40, 20, 15],
+                    backgroundColor: ['#00bfa6', '#3b82f6', '#f59e0b', '#ff7043', '#8b5cf6'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } },
+                    x: { ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } }
+                }
+            }
+        });
+
+        const retentionCtx = document.getElementById('retentionChart').getContext('2d');
+        new Chart(retentionCtx, {
+            type: 'line',
+            data: {
+                labels: ['Mes 1', 'Mes 3', 'Mes 6', 'Mes 12', 'Mes 24', 'Mes 36'],
+                datasets: [{
+                    label: 'Retención (%)',
+                    data: [100, 85, 75, 65, 60, 58],
+                    borderColor: '#8b5cf6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#e0e1dd' } } },
+                scales: {
+                    y: { beginAtZero: true, ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } },
+                    x: { ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Master Dashboard - Asistente Vial México</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1b2a; --bg-2: #1b263b; --text: #e0e1dd;
+            --accent: #00bfa6; --coral: #ff7043; --yellow: #f59e0b; --purple: #8b5cf6; --blue: #3b82f6;
+            --radius: 12px; --shadow: 0 8px 24px rgba(0,0,0,.2);
+        }
+        body { font-family: Inter, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 1800px; margin: 0 auto; }
+        h1 { font-family: Montserrat; color: var(--accent); margin-bottom: 32px; text-align: center; }
+        .nav-tabs { display: flex; gap: 8px; margin-bottom: 32px; justify-content: center; }
+        .tab-btn { padding: 12px 24px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; }
+        .tab-btn.active { background: var(--accent); color: #002b27; }
+        .tab-btn:not(.active) { background: var(--bg-2); color: var(--text); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-bottom: 32px; }
+        .card { background: var(--bg-2); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+        .metric { font-size: 32px; font-weight: 600; color: var(--accent); margin: 8px 0; }
+        .label { color: #a8b3c7; font-size: 14px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .chart-container { height: 300px; margin: 16px 0; }
+        .status-badge { padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 600; }
+        .status-complete { background: var(--accent); color: #002b27; }
+        .status-progress { background: var(--yellow); color: #1a1a1a; }
+        .status-pending { background: var(--coral); color: white; }
+        .progress-bar { background: #415a77; height: 8px; border-radius: 4px; overflow: hidden; margin: 8px 0; }
+        .progress-fill { background: var(--accent); height: 100%; transition: width 0.3s ease; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 Master Dashboard - Asistente Vial México</h1>
+        
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('overview')">Resumen</button>
+            <button class="tab-btn" onclick="showTab('deployment')">Despliegue</button>
+            <button class="tab-btn" onclick="showTab('marketing')">Marketing</button>
+            <button class="tab-btn" onclick="showTab('projections')">Proyecciones</button>
+            <button class="tab-btn" onclick="showTab('consulting')">Consultoría</button>
+        </div>
+
+        <!-- Overview Tab -->
+        <div id="overview" class="tab-content active">
+            <div style="background: var(--accent); color: #002b27; padding: 16px; border-radius: 8px; margin-bottom: 32px; text-align: center;">
+                <strong>Estado: 78% Completado | Lanzamiento: 22 Oct 2025 | Inversión: $2.25M MXN</strong>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <div class="label">Desarrollo</div>
+                    <div class="metric">100%</div>
+                    <div class="status-badge status-complete">Completado</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
+                </div>
+                <div class="card">
+                    <div class="label">Google Play</div>
+                    <div class="metric">65%</div>
+                    <div class="status-badge status-progress">En Progreso</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 65%;"></div></div>
+                </div>
+                <div class="card">
+                    <div class="label">Marketing</div>
+                    <div class="metric">35%</div>
+                    <div class="status-badge status-progress">En Progreso</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 35%;"></div></div>
+                </div>
+                <div class="card">
+                    <div class="label">Socios</div>
+                    <div class="metric">9%</div>
+                    <div class="status-badge status-pending">Inicial</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 9%;"></div></div>
+                </div>
+            </div>
+
+            <div class="grid">
+                <div class="card">
+                    <h3>Componentes Implementados</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                        <div>✅ React App funcional</div>
+                        <div>✅ Mapas interactivos</div>
+                        <div>✅ GPS tiempo real</div>
+                        <div>✅ Panel CRUD socios</div>
+                        <div>✅ Notificaciones</div>
+                        <div>✅ Offline support</div>
+                        <div>✅ Pitch deck</div>
+                        <div>✅ Análisis mercado</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Próximos Hitos</h3>
+                    <div style="padding: 8px; background: var(--bg); border-radius: 6px; margin-bottom: 8px;">
+                        <strong>30 Sep</strong> - Capacitor setup
+                    </div>
+                    <div style="padding: 8px; background: var(--bg); border-radius: 6px; margin-bottom: 8px;">
+                        <strong>15 Oct</strong> - App lista
+                    </div>
+                    <div style="padding: 8px; background: var(--bg); border-radius: 6px; margin-bottom: 8px;">
+                        <strong>22 Oct</strong> - Lanzamiento
+                    </div>
+                    <div style="padding: 8px; background: var(--bg); border-radius: 6px; margin-bottom: 8px;">
+                        <strong>4 Nov</strong> - Reuniones socios
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deployment Tab -->
+        <div id="deployment" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <div class="label">Inversión Google Play</div>
+                    <div class="metric">$51,750 MXN</div>
+                    <div style="color: #a8b3c7;">3 semanas desarrollo</div>
+                </div>
+                <div class="card">
+                    <div class="label">Lanzamiento</div>
+                    <div class="metric" style="color: var(--yellow);">22 Oct</div>
+                    <div style="color: #a8b3c7;">Google Play Store</div>
+                </div>
+                <div class="card">
+                    <div class="label">Reuniones</div>
+                    <div class="metric" style="color: var(--coral);">5</div>
+                    <div style="color: #a8b3c7;">Semana lanzamiento</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Costos por Categoría</h3>
+                <div class="chart-container">
+                    <canvas id="deploymentChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Marketing Tab -->
+        <div id="marketing" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <div class="label">Presupuesto Marketing</div>
+                    <div class="metric">$153,000 MXN</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 35%;"></div></div>
+                </div>
+                <div class="card">
+                    <div class="label">Socios Registrados</div>
+                    <div class="metric">47/500</div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 9.4%;"></div></div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Distribución Socios</h3>
+                <div class="chart-container">
+                    <canvas id="partnersChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projections Tab -->
+        <div id="projections" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <div class="label">Usuarios (36 meses)</div>
+                    <div class="metric">375,000</div>
+                    <div style="color: var(--accent);">Penetración 2.5% ZMVM</div>
+                </div>
+                <div class="card">
+                    <div class="label">Ingresos Año 3</div>
+                    <div class="metric">$180M MXN</div>
+                    <div style="color: var(--accent);">ARPU $480/año</div>
+                </div>
+                <div class="card">
+                    <div class="label">Valoración</div>
+                    <div class="metric">$1.2B MXN</div>
+                    <div style="color: var(--accent);">Múltiplo 6.7x</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Crecimiento Proyectado</h3>
+                <div class="chart-container">
+                    <canvas id="growthChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consulting Tab -->
+        <div id="consulting" class="tab-content">
+            <div class="grid">
+                <div class="card">
+                    <div class="label">Ingresos 2028</div>
+                    <div class="metric">$84M MXN</div>
+                    <div style="color: #a8b3c7;">1,000 clientes</div>
+                </div>
+                <div class="card">
+                    <div class="label">Margen Bruto</div>
+                    <div class="metric">75%</div>
+                    <div style="color: #a8b3c7;">Servicios especializados</div>
+                </div>
+                <div class="card">
+                    <div class="label">Automatización</div>
+                    <div class="metric">80%</div>
+                    <div style="color: #a8b3c7;">Procesos digitales</div>
+                </div>
+            </div>
+            
+            <div class="card">
+                <h3>Líneas de Servicio</h3>
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+                    <div style="padding: 16px; background: var(--bg); border-radius: 8px;">
+                        <strong>Básica</strong><br>
+                        <span style="color: var(--accent);">$2,500/mes</span>
+                    </div>
+                    <div style="padding: 16px; background: var(--bg); border-radius: 8px;">
+                        <strong>Premium</strong><br>
+                        <span style="color: var(--accent);">$5,000/mes</span>
+                    </div>
+                    <div style="padding: 16px; background: var(--bg); border-radius: 8px;">
+                        <strong>Empresarial</strong><br>
+                        <span style="color: var(--accent);">$15,000/mes</span>
+                    </div>
+                    <div style="padding: 16px; background: var(--bg); border-radius: 8px;">
+                        <strong>Especializada</strong><br>
+                        <span style="color: var(--accent);">Cotización</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Charts
+        const deploymentCtx = document.getElementById('deploymentChart')?.getContext('2d');
+        if (deploymentCtx) {
+            new Chart(deploymentCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Técnicos', 'Contenido', 'Legal', 'Marketing'],
+                    datasets: [{
+                        data: [10350, 13500, 11700, 16200],
+                        backgroundColor: ['#00bfa6', '#f59e0b', '#ff7043', '#8b5cf6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } },
+                        x: { ticks: { color: '#e0e1dd' } }
+                    }
+                }
+            });
+        }
+
+        const partnersCtx = document.getElementById('partnersChart')?.getContext('2d');
+        if (partnersCtx) {
+            new Chart(partnersCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Talleres', 'Grúas', 'Refaccionarias', 'Especializados'],
+                    datasets: [{
+                        data: [200, 100, 150, 50],
+                        backgroundColor: ['#00bfa6', '#ff7043', '#f59e0b', '#8b5cf6']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom', labels: { color: '#e0e1dd' } } }
+                }
+            });
+        }
+
+        const growthCtx = document.getElementById('growthChart')?.getContext('2d');
+        if (growthCtx) {
+            new Chart(growthCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2025', '2026', '2027', '2028'],
+                    datasets: [{
+                        label: 'Usuarios (K)',
+                        data: [15, 150, 300, 375],
+                        borderColor: '#00bfa6',
+                        fill: true,
+                        tension: 0.4
+                    }, {
+                        label: 'Ingresos (M)',
+                        data: [15, 60, 120, 180],
+                        borderColor: '#3b82f6',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { labels: { color: '#e0e1dd' } } },
+                    scales: {
+                        y: { ticks: { color: '#e0e1dd' }, grid: { color: '#415a77' } },
+                        x: { ticks: { color: '#e0e1dd' } }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

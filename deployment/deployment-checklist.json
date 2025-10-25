@@ -1,0 +1,83 @@
+{
+  "technical_requirements": [
+    {
+      "task": "Configurar Capacitor",
+      "command": "npm install @capacitor/core @capacitor/cli @capacitor/android",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "task": "Build producción",
+      "command": "npm run build",
+      "status": "pending",
+      "priority": "high"
+    },
+    {
+      "task": "Generar APK",
+      "command": "npx cap add android && npx cap sync",
+      "status": "pending",
+      "priority": "high"
+    }
+  ],
+  "google_play_requirements": [
+    {
+      "task": "Cuenta desarrollador",
+      "cost": "$25 USD",
+      "status": "pending"
+    },
+    {
+      "task": "Ícono app",
+      "specs": "512x512px PNG",
+      "status": "pending"
+    },
+    {
+      "task": "Capturas pantalla",
+      "specs": "Mínimo 2, máximo 8",
+      "status": "pending"
+    },
+    {
+      "task": "Política privacidad",
+      "url": "https://asistentevial.mx/privacy",
+      "status": "pending"
+    }
+  ],
+  "business_requirements": [
+    {
+      "task": "Onboarding socios",
+      "target": "50 talleres/grúas",
+      "timeline": "Semanas 9-16"
+    },
+    {
+      "task": "Convenios municipales",
+      "target": "2 municipios piloto",
+      "timeline": "Semanas 17-24"
+    },
+    {
+      "task": "Marketing digital",
+      "budget": "$3K/mes",
+      "timeline": "Semanas 25-52"
+    }
+  ],
+  "milestones": [
+    {
+      "week": 4,
+      "milestone": "App lista para Google Play"
+    },
+    {
+      "week": 8,
+      "milestone": "Publicada en Google Play"
+    },
+    {
+      "week": 16,
+      "milestone": "50 socios comerciales activos"
+    },
+    {
+      "week": 24,
+      "milestone": "Panel institucional operativo"
+    },
+    {
+      "week": 52,
+      "milestone": "10K usuarios, ROI positivo"
+    }
+  ]
+}

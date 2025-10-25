@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Asistencia Vial México</title>
+    <meta name="description" content="Sistema de emergencias viales con SOS automático y asistencia 24/7">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ef4444'/%3E%3Ctext x='50' y='60' text-anchor='middle' font-size='40' fill='white'%3E🆘%3C/text%3E%3C/svg%3E" />
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AsistenciaVial">
+    <!-- WUUNU SNIPPET - DON'T CHANGE THIS (START) -->
+    <script type="module">
+      if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV === true) {
+        if (!document.getElementById('wuunu-widget-script')) {
+          window.__WUUNU_WS__ = "http://127.0.0.1:61869/";
+          const s = document.createElement('script');
+          s.id = 'wuunu-widget-script';
+          s.src = "https://cdn.jsdelivr.net/npm/@wuunu/widget@0.1?cacheParam=673";
+          s.defer = true;
+          s.crossOrigin = 'anonymous';
+          document.head.appendChild(s);
+        }
+      }
+    </script>
+    <!-- WUUNU SNIPPET - DON'T CHANGE THIS (END) -->
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register service worker for offline support
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(registration => console.log('SW registered:', registration))
+            .catch(error => console.log('SW registration failed:', error));
+        });
+      }
+      
+      // Handle SOS shortcut
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('action') === 'sos') {
+        setTimeout(() => {
+          const sosButton = document.querySelector('.sos-button-rocket');
+          if (sosButton) sosButton.click();
+        }, 1000);
+      }
+    </script>
+</body>
+</html>

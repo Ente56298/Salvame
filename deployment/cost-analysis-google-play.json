@@ -1,0 +1,189 @@
+{
+  "project": "Asistente Vial México - Google Play Deployment",
+  "timeline": {
+    "start_date": "2025-09-24",
+    "end_date": "2025-10-15",
+    "duration_weeks": 3,
+    "testing_week": "2025-10-15 to 2025-10-21",
+    "launch_week": "2025-10-22 to 2025-10-28"
+  },
+  "total_investment": 51750,
+  "currency": "MXN",
+  "cost_breakdown": {
+    "technical": {
+      "total": 10350,
+      "percentage": 20,
+      "items": {
+        "google_play_developer": 450,
+        "ssl_certificates": 1800,
+        "device_testing": 5400,
+        "development_tools": 2700
+      }
+    },
+    "content_assets": {
+      "total": 13500,
+      "percentage": 26,
+      "items": {
+        "professional_icons": 3600,
+        "screenshots": 2700,
+        "preview_video": 5400,
+        "app_description": 1800
+      }
+    },
+    "legal_compliance": {
+      "total": 11700,
+      "percentage": 23,
+      "items": {
+        "privacy_policy": 5400,
+        "terms_conditions": 3600,
+        "legal_review": 2700
+      }
+    },
+    "initial_marketing": {
+      "total": 16200,
+      "percentage": 31,
+      "items": {
+        "landing_page": 7200,
+        "promotional_materials": 3600,
+        "initial_pr": 5400
+      }
+    }
+  },
+  "monthly_maintenance": {
+    "total": 8500,
+    "items": {
+      "server_hosting": 2500,
+      "ssl_renewal": 150,
+      "google_play_updates": 1500,
+      "bug_fixes": 2000,
+      "content_updates": 1200,
+      "monitoring_tools": 650,
+      "backup_storage": 500
+    }
+  },
+  "yearly_costs": {
+    "maintenance_total": 102000,
+    "marketing_budget": 180000,
+    "legal_updates": 12000,
+    "infrastructure_scaling": 36000,
+    "total_year_1": 330000
+  },
+  "roi_projections": {
+    "month_6": {
+      "users": 5000,
+      "revenue": 125000,
+      "costs": 102750,
+      "profit": 22250,
+      "roi_percentage": 22
+    },
+    "month_12": {
+      "users": 15000,
+      "revenue": 450000,
+      "costs": 381750,
+      "profit": 68250,
+      "roi_percentage": 18
+    }
+  },
+  "revenue_streams": {
+    "premium_subscriptions": {
+      "price_monthly": 99,
+      "expected_conversion": 8,
+      "month_6_revenue": 39600,
+      "month_12_revenue": 118800
+    },
+    "insurance_partnerships": {
+      "commission_per_user": 50,
+      "expected_signups": 15,
+      "month_6_revenue": 37500,
+      "month_12_revenue": 112500
+    },
+    "tow_service_commissions": {
+      "commission_per_service": 80,
+      "monthly_services": 200,
+      "month_6_revenue": 48000,
+      "month_12_revenue": 192000
+    },
+    "advertising": {
+      "cpm": 25,
+      "monthly_impressions": 100000,
+      "month_6_revenue": 0,
+      "month_12_revenue": 26700
+    }
+  },
+  "weekly_deliverables": {
+    "week_1": [
+      "Android app compiled",
+      "Signing certificates configured",
+      "Basic testing completed"
+    ],
+    "week_2": [
+      "Graphic assets finalized",
+      "Real device testing",
+      "Performance optimizations"
+    ],
+    "week_3": [
+      "App uploaded to Google Play Console",
+      "Legal documentation complete",
+      "Internal testing initiated"
+    ],
+    "week_4": [
+      "Beta testing completed",
+      "Critical bugs fixed",
+      "App ready for launch"
+    ]
+  },
+  "meeting_schedule": {
+    "launch_week": "2025-10-22 to 2025-10-28",
+    "meetings": [
+      {
+        "date": "2025-10-23",
+        "time": "11:00",
+        "type": "Investor Presentation Group A"
+      },
+      {
+        "date": "2025-10-24",
+        "time": "09:00",
+        "type": "Insurance Companies (Seguros Monterrey)"
+      },
+      {
+        "date": "2025-10-24",
+        "time": "15:00",
+        "type": "Municipal Presentation (Tlalnepantla)"
+      },
+      {
+        "date": "2025-10-25",
+        "time": "10:00",
+        "type": "Investment Funds Pitch"
+      }
+    ]
+  },
+  "success_kpis": {
+    "technical": [
+      "0 critical crashes",
+      "<3s load time"
+    ],
+    "store": [
+      "Google Play approval <48h"
+    ],
+    "users": [
+      "100 downloads first week"
+    ],
+    "business": [
+      "5 presentations scheduled",
+      "2 LOI signed"
+    ]
+  },
+  "risk_mitigation": {
+    "technical_delays": "Buffer time in week 4 for fixes",
+    "google_play_rejection": "Pre-validation with compliance checklist",
+    "device_compatibility": "Testing on 3 different Android models",
+    "legal_issues": "Early legal review and LFPDPPP compliance"
+  },
+  "break_even_analysis": {
+    "initial_investment": 51750,
+    "monthly_burn_rate": 8500,
+    "break_even_month": 8,
+    "break_even_users": 8500,
+    "break_even_revenue": 220000
+  }
+}
